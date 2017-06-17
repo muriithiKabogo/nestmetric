@@ -1,1 +1,13 @@
-Your latest payment failed to go through
+Your latest payment failed to go through<br>
+
+Update your card information here <%= @url %>
+<%= link_to 'here',new_user_session_url%>
+
+
+	<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+		data-description="Update card details"
+		data-label= "update Card Details"
+		data-panel-label = "update Card Details"
+		data-locale="auto"> 
+	</script>

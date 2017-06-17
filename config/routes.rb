@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
-
+  resources :users
   post 'stripe/webhook'
   root 'home#welcome'
   
