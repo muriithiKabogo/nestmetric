@@ -3,7 +3,7 @@ class StripeController < ApplicationController
 
  
   def webhook
-  	 	UserMailer.suscription_payment_failed.deliver
+  	 	UserMailer.suscription_payment_failed.deliver_now
   end
 
 end
