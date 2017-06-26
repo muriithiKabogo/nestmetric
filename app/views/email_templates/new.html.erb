@@ -1,0 +1,22 @@
+<h1>Email template generator</h1>
+<%= form_for ([@user, @user.email_templates.build])  do |f| %>
+  <p>
+  	<%= f.label :Type %><br>
+  	<%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation']]%>
+  </p>
+
+  <p>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </p>
+ 
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body,size: "30x10" %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

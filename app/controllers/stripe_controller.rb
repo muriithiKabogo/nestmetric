@@ -3,7 +3,16 @@ class StripeController < ApplicationController
 
  
   def webhook
-  	 	UserMailer.suscription_payment_failed.deliver_now
+  	@user = User.find_by_uid(params[:account])
+  	customer_email = params[:data]
+  	customer_email = customer_email[:object][:receipt_email]
+  	puts customer_email
+  	@email_template = EmailTemplate.find_by_etype("first attempt")
+  	puts @email_template.body
+  	
+  	if @user.uid == params[:account] 
+  		UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body).deliver_now
+  	end
   end
 
   def failed_charge

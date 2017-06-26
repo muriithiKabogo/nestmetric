@@ -1,0 +1,43 @@
+
+<table >
+	<tr>
+		<th style="">
+			Email type
+		</th>
+		<th style="">
+			subject
+		</th>
+		<th style="padding-left: 50px;">
+			Body
+		</th>
+	</tr>
+	<% @email_templates.each do |email_template|%>
+	<tr >
+		<td style="padding-left: 50px; width: 200px;">
+			<%= email_template.etype%>
+		</td>
+
+
+		<td style="padding-left: 50px; width: 200px;">
+			<%= email_template.subject%>
+		</td>
+
+		<td style="padding-left: 50px;">
+			<%= email_template.body%>
+		</td>
+
+		<td>
+			<%= link_to 'edit',edit_user_email_template_path(id: email_template.id) %>
+		</td>
+		
+		<td>
+			<%= link_to 'delete' , [email_template.user, email_template], method: :delete%>
+		</td>
+	</tr> 
+	<%end%>
+
+
+</table>
+
+<%=link_to 'new' ,new_user_email_template_path%>
+

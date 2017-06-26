@@ -1,0 +1,22 @@
+<h1>Edit template generator</h1>
+<%= form_for :email_template, url: user_email_template_path , method: "put" do |f| %>
+  <p>
+  	<%= f.label :Type %><br>
+  	<%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation']]%>
+  </p>
+
+  <p>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </p>
+ 
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body,size: "30x10" %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
