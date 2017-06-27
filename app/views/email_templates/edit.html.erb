@@ -12,11 +12,19 @@
  
   <p>
     <%= f.label :body %><br>
-    <%= f.text_area :body,size: "30x10" %>
+    <%= f.text_area :body,size: "30x10",id:="editor1" %>
   </p>
+
+  <script type="text/javascript" >
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1' );
+            </script>
  
   <p>
     <%= f.submit %>
   </p>
 
 <% end %>
+​
+
