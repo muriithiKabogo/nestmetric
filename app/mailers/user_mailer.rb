@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-	def suscription_payment_failed(user,customer_email, template)
+	def suscription_payment_failed(user,customer_email, template, esubject)
 
 		@url  = 'http://example.com/login'
 	    @customer_email = customer_email
@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
 	    
 	    mail from: user,
 	    	   to: @customer_email,
-	   	  subject: "Failed Payment"
+	   	  subject: esubject
     end
 
 end
