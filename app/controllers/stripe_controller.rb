@@ -5,7 +5,7 @@ class StripeController < ApplicationController
   def webhook
   	@user = User.find_by_uid(params[:account])
   	customer_email = params[:data]
-  	customer_email = "dmuriithi.k@gmail.com"#customer_email[:object][:receipt_email]
+  	customer_email = "raquel@meltwater.org"#customer_email[:object][:receipt_email]
   	puts customer_email
   	@email_template = EmailTemplate.find_by_etype("first attempt")
   	puts @email_template.body
