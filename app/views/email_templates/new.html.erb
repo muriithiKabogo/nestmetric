@@ -1,8 +1,10 @@
+<%= tinymce_assets %>
+
 <h1>Email template generator</h1>
 <%= form_for ([@user, @user.email_templates.build])  do |f| %>
   <p>
   	<%= f.label :Type %><br>
-  	<%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation']]%>
+  	<%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation'], ['thirty day expiry notice'], ['Fifteen day expiry notice'], ['Seven day expiry notice']]%>
   </p>
 
   <p>
@@ -12,7 +14,7 @@
  
   <p>
     <%= f.label :body %><br>
-    <%= f.text_area :body,size: "30x10" %>
+    <%= f.text_area :body,size: "30x10", class: "tinymce" %>
   </p>
  
   <p>
@@ -20,3 +22,5 @@
   </p>
 
 <% end %>
+
+<%= tinymce %>
