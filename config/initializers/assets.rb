@@ -12,3 +12,23 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.precompile += %w( landingpage/core.min.css )
+Rails.application.config.assets.precompile += %w( landingpage/thesaas.min.css )
+Rails.application.config.assets.precompile += %w( landingpage/style.css )
+
+Rails.application.config.assets.precompile += %w( dashboard/animate.css )
+Rails.application.config.assets.precompile += %w( dashboard/bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( dashboard/chartist-plugin-tooltip.css )
+Rails.application.config.assets.precompile += %w( dashboard/chartist.min.css )
+Rails.application.config.assets.precompile += %w( dashboard/default.css )
+Rails.application.config.assets.precompile += %w( dashboard/fullcalendar.css )
+Rails.application.config.assets.precompile += %w( dashboard/jquery.toast.css )
+Rails.application.config.assets.precompile += %w( dashboard/morris.css )
+Rails.application.config.assets.precompile += %w( dashboard/sidebar-nav.min.css )
+Rails.application.config.assets.precompile += %w( dashboard/style.css )
+Rails.application.config.assets.precompile += %w( dashboard/spinners.css)
+Rails.application.config.assets.precompile += %w( dashboard/materialdesignicons.min.css )
+Rails.application.config.assets.precompile += %w( dashboard/bootstrap.css )
+
+Rails.application.config.assets.precompile += %w( dashboard/bootstrap-wysihtml5.css )
+Rails.application.config.assets.precompile += %w( dashboard/dropzone.css )

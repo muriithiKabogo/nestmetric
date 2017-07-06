@@ -1,16 +1,7 @@
 <head>
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
-<%= stylesheet_link_tag "dashboard/sidebar-nav.min.css" %>
-<%= stylesheet_link_tag "dashboard/bootstrap-wysihtml5.css" %>
-<%= stylesheet_link_tag "dashboard/dropzone.css" %>
-<%= stylesheet_link_tag "dashboard/animate.css" %>
-<%= stylesheet_link_tag "dashboard/style.css" %>
-<%= stylesheet_link_tag "dashboard/default.css" %>
-<%= stylesheet_link_tag "dashboard/materialdesignicons.min.css" %>
-<%= stylesheet_link_tag "dashboard/bootstrap.css" %>
-<%= stylesheet_link_tag "dashboard/style.css" %>
-<%= stylesheet_link_tag "dashboard/spinners.css" %>
-<%= stylesheet_link_tag "dashboard/materialdesignicons.min.css" %>
+<%= stylesheet_link_tag "dashboard/bootstrap.css" %> 
+<%= javascript_include_tag 'application' %>
 </head>
 <body class="fix-header">
     <!-- ============================================================== -->
@@ -42,7 +33,7 @@
                 <ul class="nav navbar-top-links navbar-left">
                     
                     <li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-gmail"></i>
                             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                         </a>
                         <ul class="dropdown-menu mailbox animated bounceInDown">
@@ -129,30 +120,30 @@
                     
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li>
-                     <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>       
+                    <li> <a href="dashboard.html" class="waves-effect"><i class="mdi mdi-av-timer fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard</span></a>
+                        
                     </li>
                   
-                    <li><a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
+                    <li><a href="inbox.html" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Your Templates<span class="fa arrow"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="compose.html"><span class="hide-menu">Pre-Dunning</span></a></li>
+                            <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Pre-Dunning</span></a></li>
                            
-                           <li><a href="compose.html"><span class="hide-menu">Dunning</span></a></li>
+                           <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Dunning</span></a></li>
 
-                           <li><a href="compose.html"><span class="hide-menu">Cancellations</span></a></li>
+                           <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Cancellations</span></a></li>
 
                         </ul>
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Customers </span></a>    
+                    <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-user fa-fw"></i><span class="hide-menu">Customers </span></a>    
                     <ul class="nav nav-second-level">
                   </ul>
                     <li>
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Payment Update</span></a> <ul class="nav nav-second-level">
+                    <li><a href="javascript:void(0)" class="waves-effect"><i class=" ti-credit-card fa-fw"></i><span class="hide-menu">Payment Update</span></a> <ul class="nav nav-second-level">
                   </ul> </li>
 
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
+                    <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-agenda fa-fw"></i><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
                   </ul> </li>
 
-                    <li> <a href="widgets.html" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
+                    <li> <a href="widgets.html" class="waves-effect"><i  class="mdi mdi-settings fa-fw"></i> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
                   </ul> </li>
                 </ul>
             </div>
@@ -192,31 +183,27 @@
                                         
                                     </div>
                                 </div>
-
-
-                                          
                                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
-                                    <h3 class="box-title">First email(30 days before expiry) </h3>
-                                    <%= tinymce_assets %> 
-                                     <%= form_for :email_template, url: user_email_template_path , method: "put"  do |f| %>
-                                     <div class="form-group">
-                                     
-                                     <%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation']], class: "form-control"%></div>
-
+                                    <h3 class="box-title">First email</h3>
                                     <div class="form-group">
-                                        <%= f.text_field :subject, class: "form-control",placeholder: "Subject:" %> </div>
+                                        <input class="form-control" placeholder="From Name:"> </div>
+                                          <div class="form-group">
+                                        <input class="form-control" placeholder="From Email:"> </div>
+                                         <div class="form-group">
+                                        <input class="form-control" placeholder="Reply to:"> </div>
                                     <div class="form-group">
-
-                                    
-                                     <%= f.text_area :body,rows: "15", class: "textarea_editor form-control tinymce"%>
-                                     
-
+                                        <input class="form-control" placeholder="Subject:"> </div>
+                                    <div class="form-group">
+                                        <textarea class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea>
                                     </div>
-                                    
+                                    <h4><i class="ti-link"></i> HTML email</h4>
+                                    <form action="#" class="dropzone">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple /> </div>
+                                    </form>
                                     <hr>
-                                    <%= f.submit 'Save email template', class: "btn btn-primary" %>
-                                    <% end %>
-                                    <%= tinymce %>
+                                    <button class="btn btn-default"><i class="fa fa-times"></i>Save</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
                                 </div>
                             </div>
                         </div>
@@ -292,4 +279,3 @@
     </div>
     
 </body>
-
