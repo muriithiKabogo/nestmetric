@@ -17,7 +17,7 @@ class OmniauthCallbacksController < ApplicationController
     end
   end
 
-  def          failure
+  def failure
     
   end
 
