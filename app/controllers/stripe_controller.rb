@@ -23,9 +23,7 @@ class StripeController < ApplicationController
   	@user = User.find_by_uid(params[:account])
     customer_email = params[:data]
     attempt = params[:data][:object][:attempt_count]
-    puts attempt
-    customer_email = customer_email[:object][:receipt_email]
-    puts customer_email
+    customer_email = "dmuriithi.k@gmail.com" #customer_email[:object][:receipt_email]
     
     if @user.uid == params[:account] && attempt == 1
       @email_template = EmailTemplate.find_by_etype("first attempt")
@@ -48,4 +46,3 @@ class StripeController < ApplicationController
 
 end
 
-4
