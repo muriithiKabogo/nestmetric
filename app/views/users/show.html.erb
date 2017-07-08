@@ -1,0 +1,20 @@
+<div style="margin-top:5%;">
+
+	<div class="images">
+			
+	</div>
+
+	<div class="row loginbox">  		
+		<div class="col-md-6 col-md-offset-3 fancy align_center">
+		
+				<p>Connect your account and automatically send NestMetric your transaction data for your subscription payments.</p>
+			<hr>
+			  	<%=form_for :connect, url: user_stripe_connect_omniauth_authorize_path do|f|%>
+			  		<%= f.submit "connect", class: "btn btn-primary" %>
+			  	<%end%>
+			  	<p class="vp">You will be redirected to Stripe momentarily</p>
+			  	<%= link_to 'logout', destroy_user_session_path, :method=>'delete'%>
+		</div>
+	</div>
+
+</div>

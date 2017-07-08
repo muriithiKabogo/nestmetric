@@ -94,7 +94,7 @@ class User < ApplicationRecord
     riskier = []
     getCustomersIds(user).each do |customerId|
         customerDetails = Stripe::Customer.retrieve(customerId)
-        expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
+        expiruyMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
         
         if expiryMonth == Date.today.month && expiryYear == Date.today.year
@@ -120,6 +120,9 @@ class User < ApplicationRecord
         end     
     end
     puts riskiest.length
+  end
+
+  def revenueRecovered
   end
 
 

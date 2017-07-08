@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   	@email_templates = @user.email_templates.all
   end
 
+  def show
+  end
+
   def compose
   end
 

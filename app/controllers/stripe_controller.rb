@@ -23,8 +23,12 @@ class StripeController < ApplicationController
   	@user = User.find_by_uid(params[:account])
     customer_email = params[:data]
     attempt = params[:data][:object][:attempt_count]
-    customer_email = "dmuriithi.k@gmail.com" #customer_email[:object][:receipt_email]
-    
+    customer_email = customer_email[:object][:customer]
+
+    # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    # customerDetails = Stripe::Customer.retrieve(customerId)
+
+    puts customer_email
     if @user.uid == params[:account] && attempt == 1
       @email_template = EmailTemplate.find_by_etype("first attempt")
       UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
