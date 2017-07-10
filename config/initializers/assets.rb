@@ -32,3 +32,11 @@ Rails.application.config.assets.precompile += %w( dashboard/bootstrap.css )
 
 Rails.application.config.assets.precompile += %w( dashboard/bootstrap-wysihtml5.css )
 Rails.application.config.assets.precompile += %w( dashboard/dropzone.css )
+
+Rails.application.config.assets.precompile += %w( jquery.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap.min.js )
+Rails.application.config.assets.precompile += %w( sidebar-nav.min.js )
+Rails.application.config.assets.precompile += %w( jquery.min.js )
+Rails.application.config.assets.precompile += %w( waves.js )
+Rails.application.config.assets.precompile += %w( custom.min.js )
+Rails.application.config.assets.precompile += %w( jquery.slimscroll.js )

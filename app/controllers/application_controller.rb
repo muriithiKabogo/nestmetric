@@ -5,10 +5,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
   	current_user = resource
   	if current_user.uid == nil
-  		new_user_path
+  		user_path(current_user.id)
   	else
-
-	users_path
+	   users_path
 	end
 	
   end
