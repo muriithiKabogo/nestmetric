@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,:omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :email_templates
+  has_many :riskycustomers
 
     def send_failed_payment_email
       UserMailer.suscription_payment_failed(self).deliver_now
@@ -44,7 +45,7 @@ class User < ApplicationRecord
         nonDelinquentButRiskyCustomers = nonDelinquentButRiskyCustomers.push(customerId)
       end
     end
-    puts nonDelinquentButRiskyCustomers.length
+    nonDelinquentButRiskyCustomers
   end
 
 
@@ -76,23 +77,23 @@ class User < ApplicationRecord
 
    def retrieveRiskyCustomer(user)
     risky = []
-    getCustomersIds(user).each do |customerId|
+    notDelinquentButRisky(user).each do |customerId|
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
         
         if expiryMonth == Date.today.month && expiryYear == Date.today.year
           if  Date.today.day  >= 1 && Date.today.day < 15
-              risky = risky.push(customerId)
+              risky = risky.push(customerDetails)
           end
         end     
     end
-    puts risky.length
+    risky
   end
 
   def retrieveRiskierCustomer(user)
     riskier = []
-    getCustomersIds(user).each do |customerId|
+    notDelinquentButRisky(user).each do |customerId|
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiruyMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
@@ -108,7 +109,7 @@ class User < ApplicationRecord
 
   def retrieveRiskiestCustomer(user)
     riskiest = []
-    getCustomersIds(user).each do |customerId|
+    notDelinquentButRisky(user).each do |customerId|
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
@@ -122,7 +123,18 @@ class User < ApplicationRecord
     puts riskiest.length
   end
 
-  def revenueRecovered
+  
+
+  def saveRiskyCustomers(user)
+
+    retrieveRiskyCustomer(user).each do |customer|
+
+      planName = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["name"]
+      amount = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["amount"]
+      user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount)  
+
+    end
+
   end
 
 

@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def compose
   end
 
+private
 
+  def risky
+    
+  end
 
 end

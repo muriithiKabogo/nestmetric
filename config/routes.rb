@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'users/compose'
   root 'home#welcome'
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   resources :users do
   	resources :email_templates
   end
-  
+  resources :riskycustomers
   post 'stripe/webhook'
   post 'stripe/failed_charge'
   post 'stripe/invoice_payment_failed'

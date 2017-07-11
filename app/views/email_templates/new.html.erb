@@ -1,16 +1,8 @@
 <head>
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
-<%= stylesheet_link_tag "dashboard/sidebar-nav.min.css" %>
-<%= stylesheet_link_tag "dashboard/bootstrap-wysihtml5.css" %>
-<%= stylesheet_link_tag "dashboard/dropzone.css" %>
-<%= stylesheet_link_tag "dashboard/animate.css" %>
-<%= stylesheet_link_tag "dashboard/style.css" %>
-<%= stylesheet_link_tag "dashboard/default.css" %>
-<%= stylesheet_link_tag "dashboard/materialdesignicons.min.css" %>
 <%= stylesheet_link_tag "dashboard/bootstrap.css" %>
-<%= stylesheet_link_tag "dashboard/style.css" %>
-<%= stylesheet_link_tag "dashboard/spinners.css" %>
-<%= stylesheet_link_tag "dashboard/materialdesignicons.min.css" %>
+<%= javascript_include_tag 'application' %>
+</head>
 </head>
 <body class="fix-header">
     <!-- ============================================================== -->
@@ -133,7 +125,8 @@
                      <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>       
                     </li>
                   
-                    <li><a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
+                    <li>
+                <a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="compose.html"><span class="hide-menu">Pre-Dunning</span></a></li>
                            
@@ -141,13 +134,13 @@
 
                            <li><a href="compose.html"><span class="hide-menu">Cancellations</span></a></li>
 
-                        </ul>
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Customers </span></a>    
+                        </ul></li>
+                   <li><a href="javascript:void(0)"> <span class="hide-menu"><%=link_to 'Customers',riskycustomers_path, class: "waves-effect"%></span></a> 
+                    </li>     
                     <ul class="nav nav-second-level">
                   </ul>
                     <li>
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Payment Update</span></a> <ul class="nav nav-second-level">
-                  </ul> </li>
+                    <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
 
                     <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
                   </ul> </li>

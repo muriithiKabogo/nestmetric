@@ -2,7 +2,6 @@
 <%= stylesheet_link_tag "dashboard/bootstrap.css" %>
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
 <%= javascript_include_tag 'application' %>
-<%= favicon_link_tag 'whitefavicon1.png' %>
 </head>
 
 <body class="fix-header">
@@ -18,18 +17,11 @@
         <!-- ============================================================== -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
+                 <div class="top-left-part">
+                 <a class="logo" href="index.html"></a>
+                 </div>
 
-                <div class="top-left-part">
-                    <!-- Logo -->
-                    <a class="logo" href="index.html">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                        <!--This is dark logo icon-->
-                       <!-- <img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" />--><!--This is light logo icon--><!--<img src="../plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />-->
-                     </b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs">
-                        <!--This is dark logo text--><img src="../plugins/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="../plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
-                     </span> </a>
-                </div>
+
                 <!-- /Logo -->
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-left">
@@ -73,36 +65,22 @@
                         <!-- /.dropdown-messages -->
                     </li>
                     <!-- .Task dropdown -->
-                   
+                   </ul>
                    
                 
                <ul class="nav navbar-top-links navbar-right pull-right">
                     
                     <li class="dropdown">
-                       <!-- <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> </a>--></ul><%= link_to 'log out', destroy_user_session_path,:method=>'delete'%>
-                        <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><img src="../plugins/images/users/varun.jpg" alt="user" /></div>
-                                    <div class="u-text">
-                                        <h4>Steave Jobs</h4>
-                                        <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                </div>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                        </ul>
+                       <!-- <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b><span class="caret"></span> </a>-->
+         
+                       <%= link_to 'logout', destroy_user_session_path, :method=>'delete'%>
+                        
                         <!-- /.dropdown-user -->
                     </li>
                     <!-- /.dropdown -->
                 </ul>
             </div> 
+
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
             <!-- /.navbar-static-side -->
@@ -123,21 +101,25 @@
                         
                     </li>
                   
-                    <li><a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
+        <li>
+        <a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
                         <ul class="nav nav-second-level">
                             <li><a><span class="hide-menu"> <%=link_to 'Predunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a>
                             </li>                   
-                           <li><a href="compose.html"><span class="hide-menu">Dunning</span></a></li>
+                           <li><a ><span class="hide-menu"><%=link_to 'Dunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
-                           <li><a href="compose.html"><span class="hide-menu">Cancellations</span></a></li>
+                           <li><a ><span class="hide-menu"><%=link_to 'cancellations',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
                         </ul>
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Customers </span></a>    
-                    <ul class="nav nav-second-level">
+
+                        </li>
+                    <li><a href="javascript:void(0)"> <span class="hide-menu"><%=link_to 'Customers',riskycustomers_path, class: "waves-effect"%></span></a> 
+                    </li>   
+                    <ul class="nav nav-second-level"> 
                   </ul>
                     <li>
-                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Payment Update</span></a> <ul class="nav nav-second-level">
-                  </ul> </li>
+                    
+                    <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
 
                     <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
                   </ul> </li>

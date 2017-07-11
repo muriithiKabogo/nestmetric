@@ -1,7 +1,12 @@
+<!-- <h1>Riskycustomers</h1>
+
+<%=@riskycustomers%> -->
+
 <head>
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
-<%= stylesheet_link_tag "dashboard/bootstrap.css" %> 
+<%= stylesheet_link_tag "dashboard/bootstrap.css" %>
 <%= javascript_include_tag 'application' %>
+</head>
 </head>
 <body class="fix-header">
     <!-- ============================================================== -->
@@ -33,7 +38,7 @@
                 <ul class="nav navbar-top-links navbar-left">
                     
                     <li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-gmail"></i>
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> 
                             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                         </a>
                         <ul class="dropdown-menu mailbox animated bounceInDown">
@@ -120,33 +125,29 @@
                     
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li> 
-
-                     <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>
-                        
+                    <li>
+                     <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>       
                     </li>
                   
-                    <li><a href="inbox.html" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Your Templates<span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Pre-Dunning</span></a></li>
-                           
-                           <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Dunning</span></a></li>
+                    <li><a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
+                       <ul class="nav nav-second-level">
+                            <li><a><span class="hide-menu"> <%=link_to 'Predunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a>
+                            </li>                   
+                           <li><a ><span class="hide-menu"><%=link_to 'Dunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
-                           <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Cancellations</span></a></li>
+                           <li><a ><span class="hide-menu"><%=link_to 'cancellations',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
-                        </ul>
-                    <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-user fa-fw"></i><span class="hide-menu">Customers </span></a>    
-                    <ul class="nav nav-second-level">
-                  </ul>
-                    <li>
-                    <li><a href="javascript:void(0)" class="waves-effect"><i class=" ti-credit-card fa-fw"></i><span class="hide-menu">Payment Update</span></a> <ul class="nav nav-second-level">
-                  </ul> </li>
+                        </ul></li>
+                    <li><a href=""> <span class=""><%=link_to 'Customers',riskycustomers_path, class: "waves-effect"%></span></a> 
+                    </li>      
+                   
+                    <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
 
-                    <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-agenda fa-fw"></i><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
-                  </ul> </li>
+                    <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> 
+                    </li>
 
-                    <li> <a href="widgets.html" class="waves-effect"><i  class="mdi mdi-settings fa-fw"></i> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
-                  </ul> </li>
+                    <li> <a href="widgets.html" class="waves-effect"> <span class="hide-menu">App Settings </span></a>
+                     </li>
                 </ul>
             </div>
         </div>
@@ -161,57 +162,54 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Pre-Dunning </h4> </div>
+                        <h4 class="page-title">Payment update</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         
                         
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Compose Mail</li>
+                            <li class="active">Payment update</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <!-- row -->
-                <div class="row">
-                    <!-- Left sidebar -->
-                    <div class="col-md-12">
+                <!-- credit card update-->
+                <div class="col-sm-9">
                         <div class="white-box">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-3  col-sm-4 col-xs-12 inbox-panel">
-                                    <div> 
-                                        <div class="list-group mail-list m-t-20"> <a href="compose.html" class="list-group-item active">First Email <span class="label label-rouded label-success pull-right"></span></a> <a href="#" class="list-group-item ">Second Email</a> <a href="#" class="list-group-item">Third Email <span class="label label-rouded label-warning pull-right"></span></a> <a href="#" class="list-group-item"></a> </div>
-                                        <hr class="m-t-5">
-                                        
+                            <h3 class="box-title m-b-0">Credit card update</h3>
+                            <p class="text-muted m-b-30"> </p>
+                            <form data-toggle="validator">
+                                <div class="form-group">
+                                    <label for="inputName" class="control-label">Card Number</label>
+                                    
+                                    <input type="text" class="form-control" id="inputName" placeholder="4242 4242 4242 4242" required> </div>
+                               
+                                <div class="form-group" style="padding-top: 50px;">
+                                    <label for="inputPassword2" class="control-label">Expiry Date</label>
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword2" placeholder="Year" required> <span class="help-block"></span> </div>
+
+                                        <div class="form-group col-sm-6">
+                                            <input type="password" class="form-control" id="inputPasswordConfirm2" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="month" required>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 mail_listing">
-                                    <h3 class="box-title">First email</h3>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="From Name:"> </div>
-                                          <div class="form-group">
-                                        <input class="form-control" placeholder="From Email:"> </div>
-                                         <div class="form-group">
-                                        <input class="form-control" placeholder="Reply to:"> </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Subject:"> </div>
-                                    <div class="form-group">
-                                        <textarea class="textarea_editor form-control" rows="15" placeholder="Enter text ..."></textarea>
-                                    </div>
-                                    <h4><i class="ti-link"></i> HTML email</h4>
-                                    <form action="#" class="dropzone">
-                                        <div class="fallback">
-                                            <input name="file" type="file" multiple /> </div>
-                                    </form>
-                                    <hr>
-                                    <button class="btn btn-default"><i class="fa fa-times"></i>Save</button>
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+                                <div class="form-group">
+                                    <!-- <div class="checkbox">
+                                        <input type="checkbox" id="terms2" data-error="Before you wreck yourself" required>
+                                        <label for="terms"> Remember Me?</label>
+                                        <div class="help-block with-errors"></div>
+                                    </div> -->
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Update card details</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-                <!-- /.row -->
+                <!-- /.payment update -->
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->
                 <!-- ============================================================== -->
