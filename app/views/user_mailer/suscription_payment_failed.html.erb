@@ -6,7 +6,7 @@
   <body>
 	
 	<%= @template.html_safe%>
-	<%= new_riskycustomer_url(@uid)%>
+	<%= riskycustomers_url(@uid),:method=>'post'%>
 
   </body>
 </html>
