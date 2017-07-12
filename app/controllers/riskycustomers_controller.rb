@@ -9,5 +9,9 @@ class RiskycustomersController < ApplicationController
   	@user = @user = User.find_by_uid(params[:uid])
   end
 
+  def create
+
+  end
+
 
 end
