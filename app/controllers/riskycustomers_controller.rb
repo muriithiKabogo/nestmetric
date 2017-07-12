@@ -6,7 +6,8 @@ class RiskycustomersController < ApplicationController
   end
 
   def new
-  	@user = current_user
+  	@user = @user = User.find_by_uid(params[:uid])
   end
+
 
 end
