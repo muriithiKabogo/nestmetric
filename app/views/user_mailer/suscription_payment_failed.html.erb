@@ -6,7 +6,8 @@
   <body>
 	
 	<%= @template.html_safe%>
-	<%= riskycustomers_url(@uid),:method=>'post'%>
+
+	<%= link_to 'update credit card', riskycustomers_path(@uid),:method=>'post'%>
 
   </body>
 </html>
