@@ -9,7 +9,4 @@ class RiskycustomersController < ApplicationController
   	@user = current_user
   end
 
-  def create
-  end
-
 end
