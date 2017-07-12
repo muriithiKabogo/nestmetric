@@ -11,7 +11,7 @@ class StripeController < ApplicationController
   	puts @email_template.body
   	
   	if @user.uid == params[:account] 
-  		UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+  		UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
   	end
   end
 
