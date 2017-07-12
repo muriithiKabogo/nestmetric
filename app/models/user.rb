@@ -95,7 +95,7 @@ class User < ApplicationRecord
     riskier = []
     notDelinquentButRisky(user).each do |customerId|
         customerDetails = Stripe::Customer.retrieve(customerId)
-        expiruyMonth = customerDetails["sources"]["data"][0]["exp_month"]
+        expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
         
         if expiryMonth == Date.today.month && expiryYear == Date.today.year

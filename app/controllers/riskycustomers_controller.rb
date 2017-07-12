@@ -1,5 +1,5 @@
 class RiskycustomersController < ApplicationController
-  before_action :authenticate_user!
+  
   def index
   	@user = current_user
   	@riskycustomers = @user.riskycustomers
@@ -11,5 +11,5 @@ class RiskycustomersController < ApplicationController
 
   def create
   end
-  
+
 end
