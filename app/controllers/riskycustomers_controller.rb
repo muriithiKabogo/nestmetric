@@ -1,5 +1,5 @@
 class RiskycustomersController < ApplicationController
-  
+  before_action :authenticate_user! except: :webhook
   def index
   	@user = current_user
   	@riskycustomers = @user.riskycustomers
