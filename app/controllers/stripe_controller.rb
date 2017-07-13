@@ -23,28 +23,29 @@ class StripeController < ApplicationController
   	@user = User.find_by_uid(params[:account])
     customer_email = params[:data]
     attempt = params[:data][:object][:attempt_count]
-    customer_email = customer_email[:object][:customer]
+    customerId = customer_email[:object][:customer]
 
-    # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    # customerDetails = Stripe::Customer.retrieve(customerId)
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    customer_email = Stripe::Customer.retrieve(customerId)
+    customer_email = customer_email[:email]
 
     puts customer_email
     if @user.uid == params[:account] && attempt == 1
       @email_template = EmailTemplate.find_by_etype("first attempt")
-      UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
 
     elsif @user.uid == params[:account] && attempt == 2
 
       @email_template = EmailTemplate.find_by_etype("second attempt")
-      UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     elsif @user.uid == params[:account] && attempt == 3
 
       @email_template = EmailTemplate.find_by_etype("third attempt")
-      UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     elsif @user.uid == params[:account] && attempt == 4
 
       @email_template = EmailTemplate.find_by_etype("cancellation")
-      UserMailer.suscription_payment_failed(@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     end
   end
 
