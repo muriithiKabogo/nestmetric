@@ -12,6 +12,7 @@ class RiskycustomersController < ApplicationController
   	 @publishable_key = ENV['stripe_publishable_key'] 
   	 customer_email = Stripe::Customer.retrieve(params[:custId])
      @customer_email = customer_email[:email]
+     puts @customer_email
   end
 
   def create
