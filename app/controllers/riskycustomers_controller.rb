@@ -6,7 +6,7 @@ class RiskycustomersController < ApplicationController
   end
 
   def new
-  	 @user = User.find_by_uid(params[:uid])
+  	 # @user = User.find_by_uid(params[:uid])
 
   	 # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
   	 # @publishable_key = ENV['stripe_publishable_key'] 
