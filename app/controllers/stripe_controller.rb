@@ -26,7 +26,7 @@ class StripeController < ApplicationController
     customerId = customer_email[:object][:customer]
 
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    customer_email = Stripe::Customer.retrieve(customerId)
+    customer_email = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc")
     customer_email = customer_email[:email]
 
     puts customer_email
