@@ -28,24 +28,25 @@ class StripeController < ApplicationController
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     customer_email = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc")
     customer_email = customer_email[:email]
+    custId = "cus_AgI34MFkZad9mc"
 
     puts customer_email
     if @user.uid == params[:account] && attempt == 1
       @email_template = EmailTemplate.find_by_etype("first attempt")
-      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(custId,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
 
     elsif @user.uid == params[:account] && attempt == 2
 
       @email_template = EmailTemplate.find_by_etype("second attempt")
-      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(custId,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     elsif @user.uid == params[:account] && attempt == 3
 
       @email_template = EmailTemplate.find_by_etype("third attempt")
-      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(custId,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     elsif @user.uid == params[:account] && attempt == 4
 
       @email_template = EmailTemplate.find_by_etype("cancellation")
-      UserMailer.suscription_payment_failed(@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(custId,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     end
   end
 
