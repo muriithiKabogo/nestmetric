@@ -128,16 +128,16 @@
                      <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>       
                     </li>
                   
-                    <li><a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
-                       <ul class="nav nav-second-level">
+                    <li><a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu">Your Templates</span> </a>
+                      <!--  <ul class="nav nav-second-level">
                             <li><a><span class="hide-menu"> <%=link_to 'Predunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a>
                             </li>                   
                            <li><a ><span class="hide-menu"><%=link_to 'Dunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
                            <li><a ><span class="hide-menu"><%=link_to 'cancellations',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
-                        </ul>
-                    <li><a href="javascript:void(0)"> <span class="hide-menu"><%=link_to 'Customers',riskycustomers_path, class: "waves-effect"%></span></a> 
+                        </ul> -->
+                    <li><a href="/riskycustomers" class="waves-effect"><span class="hide-menu">Customers</span></a>
                     </li>      
                     <ul class="nav nav-second-level">
                   </ul>
@@ -164,7 +164,10 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Templates </h4> </div>
+                        <h4 class="page-title">
+                        	<!-- <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="/users/"></button> -->
+					 <%= link_to 'add new template', new_user_email_template_path, class: "btn btn-info btn-rounded"%>                                              
+                         </h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         
                         

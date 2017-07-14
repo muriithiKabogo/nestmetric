@@ -102,16 +102,18 @@
                     </li>
                   
                     <li>
-                <a href="inbox.html" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
-                        <ul class="nav nav-second-level">
+               <a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu">Your Templates</span> </a>
+                       <!--  <ul class="nav nav-second-level">
                             <li><a href="compose.html"><span class="hide-menu">Pre-Dunning</span></a></li>
                            
                            <li><a href="compose.html"><span class="hide-menu">Dunning</span></a></li>
 
                            <li><a href="compose.html"><span class="hide-menu">Cancellations</span></a></li>
 
-                        </ul></li>
-                   <li><a href="javascript:void(0)"> <span class="hide-menu"><%=link_to 'Customers',riskycustomers_path, class: "waves-effect"%></span></a> 
+                        </ul> -->
+
+                        </li>
+                   <li><a href="/riskycustomers" class="waves-effect"><span class="hide-menu">Customers</span></a>
                     </li>     
                     <ul class="nav nav-second-level">
                   </ul>
