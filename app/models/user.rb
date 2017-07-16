@@ -22,8 +22,7 @@ class User < ApplicationRecord
       Stripe::Subscription.list({limit: 100})
     rescue Exception => e
       print e
-    end
-    
+    end 
   end
 
   def getCustomersIds(user)
@@ -45,7 +44,7 @@ class User < ApplicationRecord
         nonDelinquentButRiskyCustomers = nonDelinquentButRiskyCustomers.push(customerId)
       end
     end
-    nonDelinquentButRiskyCustomers
+     nonDelinquentButRiskyCustomers
   end
 
 
@@ -83,7 +82,7 @@ class User < ApplicationRecord
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
         
         if expiryMonth == Date.today.month && expiryYear == Date.today.year
-          if  Date.today.day  >= 1 && Date.today.day < 15
+          if  Date.today.day  #>= 1 && Date.today.day < 15
               risky = risky.push(customerDetails)
           end
         end     
@@ -104,7 +103,7 @@ class User < ApplicationRecord
           end
         end     
     end  
-    puts riskier.length
+     puts riskier.length
   end
 
   def retrieveRiskiestCustomer(user)

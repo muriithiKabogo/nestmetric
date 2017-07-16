@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
   def index
-  	@user = current_user
+    @user = current_user
+    GetRiskyCustomersJob.perform_later(@user)   
   	@email_template = EmailTemplate.new
   	@email_templates = @user.email_templates.all
   end
