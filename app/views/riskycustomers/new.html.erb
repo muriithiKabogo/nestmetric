@@ -5,6 +5,7 @@
 <head>
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
 <%= stylesheet_link_tag "dashboard/bootstrap.css" %>
+<%= stylesheet_link_tag "dashboard/card.css" %>
 <%= javascript_include_tag 'application' %>
 </head>
 </head>
@@ -174,7 +175,7 @@
                     <!-- /.col-lg-12 -->
                 </div>
                <!--   credit card update -->
-                <div class="col-sm-9">
+               <!-- <div class="col-sm-9">
                         <div class="white-box">
                             <h3 class="box-title m-b-0">Credit card update</h3>
                             <p class="text-muted m-b-30"> </p>
@@ -197,18 +198,77 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <!-- <div class="checkbox">
+                                    <! <div class="checkbox">
                                         <input type="checkbox" id="terms2" data-error="Before you wreck yourself" required>
                                         <label for="terms"> Remember Me?</label>
                                         <div class="help-block with-errors"></div>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Update card details</button>
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
+
+               <!--credit card end--> 
+               
+ <style>
+        .demo-container {
+            width: 100%;
+            max-width: 350px;
+            margin: 50px auto;
+        }
+        form {
+            margin: 30px;
+        }
+        input {
+            width: 200px;
+            margin: 10px auto;
+            display: block;
+        }
+    </style>
+    <div class="col-sm-9">
+    <div class="white-box">
+    <div class="form-group">
+    <!-- <div class="demo-container"> --> 
+        <div class="card-wrapper"></div>
+
+        <div class="form-container active">
+            <form action="">
+                <!-- <input placeholder="Card number" type="tel" name="number">
+                <input placeholder="Full name" type="text" name="name">
+                <input placeholder="MM/YY" type="tel" name="expiry">
+                <input placeholder="CVC" type="number" name="cvc">
+                 -->
+
+
+                 <label for="inputName" class="control-label">Card Number:</label>
+                 <input type="tel" class="form-control" id="inputName" placeholder="Card Number" name="number" required> 
+                  <label for="inputName" class="control-label">Fullname:</label>
+                 <input type="text" class="form-control" id="inputName" placeholder="Fullname" name="name" required> 
+                  <label for="inputName" class="control-label">MM/YY:</label>
+                 <input type="tel" class="form-control" id="inputName" placeholder="MM/YY" required name="expiry"> 
+                  <label for="inputName" class="control-label">CVC:</label>
+                 <input type="number" class="form-control" id="inputName" placeholder="Card Number" name="cvc" required> 
+
+            </form>
+            <button type="submit" class="btn btn-success">Update card details</button>
+        </div>
+    
+</div>
+</div>
+
+
+    <%= javascript_include_tag "card.js" %>
+    <script>
+        new Card({
+            form: document.querySelector('form'),
+            container: '.card-wrapper'
+        });
+    </script>
+    
+
        <!--  <%= form_tag riskycustomers_path do %>
               <article>
                 <% if flash[:error].present? %>
@@ -291,11 +351,15 @@
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
-            </div>
+</div>
+
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2017 &copy; Nestmetric  </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
+   
+
+
     
 </body>
