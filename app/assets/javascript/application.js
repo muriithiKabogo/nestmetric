@@ -25,3 +25,5 @@
 //= require custom.min.js
 //= require jquery.toast.js
 //= require turbolinks
+
+<%= javascript_include_tag "application" %>
