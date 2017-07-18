@@ -18,7 +18,7 @@
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                  <div class="top-left-part">
-                 <a class="logo" href="index.html"></a>
+                 <a class="logo" href="index.html">  </a>
                  </div>
 
 
@@ -157,7 +157,7 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"> <span class="counter text-success">$ 6590</span></li>
+                                <li class="text-right"> <span class="counter text-success">$ 0</span></li>
                             </ul>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                                <li class="text-right"> <span class="counter text-purple">$ 8130</span></li>
+                                <li class="text-right"> <span class="counter text-purple">$ 0</span></li>
                             </ul>
                         </div>
                     </div>
@@ -179,18 +179,18 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"> <span class="counter text-info">70</span></li>
+                                <li class="text-right"> <span class="counter text-info"><%=@allfailed%></span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Churn Rate</h3>
+                            <h3 class="box-title">Cancellations</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash4"></div>
                                 </li>
-                                <li class="text-right"> <span class="text-danger">18%</span></li>
+                                <li class="text-right"> <span class="text-danger"><%=@cancellation%></span></li>
                             </ul>
                         </div>
                     </div>
@@ -216,15 +216,18 @@
                             <div class="panel-heading">LIVE STREAM</div>
                             <div class="panel-body">
                                 <div class="steamline">
+                                <% @riskycustomers.each do |riskycustomer|%>
                                     <div class="sl-item">
-                                       <span class="label label-rouded label-danger">CANCELLED</span>
+                                       <span class="label label-rouded label-danger">EXPIRY IN 30 DAYS</span>
                                         <br/>
                                         <div class="sl-right">
-                                            <div><a href="#">Jonathan Kyte</a> <span class="sl-date">5 minutes ago</span></div>
-                                            <div class="desc">Pro plan - $ 200</div>
+                                            <div><a href="#"><%=riskycustomer.email%></a> <span class="sl-date"></span></div>
+                                            <div class="desc"><%=riskycustomer.plan%> - $ <%=riskycustomer.amount/100%></div>
                                         </div>
                                     </div>
-                                    <div class="sl-item">
+                                <%end%>
+
+                                    <!-- <div class="sl-item">
                                        <span class="label label-rouded label-info">EXPIRY IN 30 DAYS</span> <br/> 
                                         <div class="sl-right">
                                             <div><a href="#"></a> Joseline Harnandez <span class="sl-date">5 minutes ago</span></div>
@@ -235,7 +238,7 @@
                                     <div class="sl-item">
                                         <span class="label label-rouded label-info">EXPIRY IN 30 DAYS</span>
                                         <div class="sl-right">
-                                            <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                            <div><a href="#">K Michelle</a> <span class="sl-date">5 minutes ago</span></div>
                                             <div class="desc">hobby plan - $ 100 </div>
                                         </div>
                                     </div>
@@ -246,7 +249,7 @@
                                             <div><a href="#">Varun Dhavan</a> <span class="sl-date">5 minutes ago</span></div>
                                             <div class="desc">hobby plan - $ 100</div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     
                                 </div>
                             </div>

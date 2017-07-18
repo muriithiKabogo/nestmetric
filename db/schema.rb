@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710191237) do
+ActiveRecord::Schema.define(version: 20170717063614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cancellations", force: :cascade do |t|
+    t.integer "totalCancelation"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cancellations_on_user_id"
+  end
 
   create_table "email_templates", force: :cascade do |t|
     t.string "subject"
@@ -23,6 +31,14 @@ ActiveRecord::Schema.define(version: 20170710191237) do
     t.datetime "updated_at", null: false
     t.string "etype"
     t.index ["user_id"], name: "index_email_templates_on_user_id"
+  end
+
+  create_table "failed_charges", force: :cascade do |t|
+    t.integer "fcharge"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_failed_charges_on_user_id"
   end
 
   create_table "riskycustomers", force: :cascade do |t|
@@ -57,6 +73,8 @@ ActiveRecord::Schema.define(version: 20170710191237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cancellations", "users"
   add_foreign_key "email_templates", "users"
+  add_foreign_key "failed_charges", "users"
   add_foreign_key "riskycustomers", "users"
 end
