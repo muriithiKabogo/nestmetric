@@ -46,6 +46,9 @@
                     <small>Enter your details below</small>
                   
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html=> { class: 'form-horizontal new-lg-form',id: 'loginform' }) do |f| %>
+
+                    <%= devise_error_messages! %>
+                    
                     <div class="form-group  m-t-20">
                       <div class="col-xs-12">
                         <label>Email Address</label>

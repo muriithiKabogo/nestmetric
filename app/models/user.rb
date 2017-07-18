@@ -132,7 +132,8 @@ class User < ApplicationRecord
 
       planName = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["name"]
       amount = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["amount"]
-      user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount)  
+      custId = customer["id"]
+      user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId)  
     end
 
   end
