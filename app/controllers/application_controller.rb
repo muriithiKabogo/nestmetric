@@ -6,113 +6,113 @@ class ApplicationController < ActionController::Base
   	current_user = resource
   	if current_user.uid == nil 
       if current_user.email_templates.count == 0
-fifetype = "15 day expiry notice"
- 
- fifsubject = "expiry notice"
+            fifetype = "15 day expiry notice"
+             
+             fifsubject = "expiry notice"
 
- fifbody = "<p>Hi Rosie</p>
-      <p>Your Visa card ending in 4242, which is used to process payments for 
-      the Pro Plan on Kudobuzz will expire at the end of this month (in 15 days) .</p>
-      <p>If you have a moment, please update your payment information in order to
-       continue enjoying our services.(it'll take less than a minute) using this 
-      link https://payments.stunning.co/payment_update/2037purqitmpobpklzqpdlcna/cus_testcustomerid . </p>
-      <p>Thanks for being a Kudobuzz customer!</p>
-      <p>Kennah Amoah</p>"
+             fifbody = "<p>Hi Rosie</p>
+                  <p>Your Visa card ending in 4242, which is used to process payments for 
+                  the Pro Plan on Kudobuzz will expire at the end of this month (in 15 days) .</p>
+                  <p>If you have a moment, please update your payment information in order to
+                   continue enjoying our services.(it'll take less than a minute) using this 
+                  link https://payments.stunning.co/payment_update/2037purqitmpobpklzqpdlcna/cus_testcustomerid . </p>
+                  <p>Thanks for being a Kudobuzz customer!</p>
+                  <p>Kennah Amoah</p>"
 
-firstetype = "first attempt"
+            firstetype = "first attempt"
 
-firstsubject = "Failed charge"
+            firstsubject = "Failed charge"
 
-firstbody = "<p>Greetings Rosie</p>
-      <p>We just tried to charge your card, but it failed for the following reason:</p>
-      <p>Card Declined.</p>
-      <p>This indicates that there's something wrong with your payment method. Most of the time this is due to <em><strong>expired credit card</strong></em> or a recently <em><strong>changed billing address.</strong></em></p>
-      <p>Please update your payment information to keep your account active
-       (it'll take less than a minute). To save you some time, here's a 
-      direct link to your payment update page </p>
-      <p>Thanks so much for choosing Kudobuzz.&nbsp; 
-      Let us know if there's anything else we can do to help you get the most out of it.</p>
-      <p>Thanks</p>
-      <p>Kenna Amoah</p>"
+            firstbody = "<p>Greetings Rosie</p>
+                  <p>We just tried to charge your card, but it failed for the following reason:</p>
+                  <p>Card Declined.</p>
+                  <p>This indicates that there's something wrong with your payment method. Most of the time this is due to <em><strong>expired credit card</strong></em> or a recently <em><strong>changed billing address.</strong></em></p>
+                  <p>Please update your payment information to keep your account active
+                   (it'll take less than a minute). To save you some time, here's a 
+                  direct link to your payment update page </p>
+                  <p>Thanks so much for choosing Kudobuzz.&nbsp; 
+                  Let us know if there's anything else we can do to help you get the most out of it.</p>
+                  <p>Thanks</p>
+                  <p>Kenna Amoah</p>"
 
-secetpe = "second attempt"
+            secetpe = "second attempt"
 
-secsubject = "Failed charge"
+            secsubject = "Failed charge"
 
-secbody = "<p>Greetings Rosie</p> <p>We just re-tried to charge your card for a second time, 
-      but it failed for the following reason:</p> <p>Card Declined.</p> <p>&nbsp;
-      Most of the time this is due to <em><strong>expired credit card</strong></em> or a 
-      recently <em><strong>changed billing address.</strong></em></p> <p>Please update your 
-      payment information to keep your account active (it'll take less than a minute).
-       To save you some time, here's a direct link to your payment update page
-       http://example.com/login</a></p> <p>Thanks so much for choosing Kudobuzz.&nbsp; 
-       Let us know if there's anything else we can do to help you get the most out of it.</p>
-        <p>Thanks</p> <p>Kenna Amoah</p>"
+            secbody = "<p>Greetings Rosie</p> <p>We just re-tried to charge your card for a second time, 
+                  but it failed for the following reason:</p> <p>Card Declined.</p> <p>&nbsp;
+                  Most of the time this is due to <em><strong>expired credit card</strong></em> or a 
+                  recently <em><strong>changed billing address.</strong></em></p> <p>Please update your 
+                  payment information to keep your account active (it'll take less than a minute).
+                   To save you some time, here's a direct link to your payment update page
+                   http://example.com/login</a></p> <p>Thanks so much for choosing Kudobuzz.&nbsp; 
+                   Let us know if there's anything else we can do to help you get the most out of it.</p>
+                    <p>Thanks</p> <p>Kenna Amoah</p>"
 
-thietye = "third attempt"
+            thietye = "third attempt"
 
-thisubject = "Failed charge"
+            thisubject = "Failed charge"
 
-thibody = "<p>Greetings Rosie</p> <p>We just re-tried to charge your card for a 
-      third time, but it failed for the following reason:</p> <p>Card Declined.</p> 
-      <p>&nbsp;Most of the time this is due to <em><strong>expired credit card</strong></em> or
-       a recently <em><strong>changed billing address.</strong></em></p> 
-       <p>Please update your payment information to keep your account active
-        (it'll take less than a minute). To save you some time, h
-        ere's a direct link to your payment update page </p> <p>
-        Thanks so much for choosing Kudobuzz.&nbsp; Let us know if there's anything
-         else we can do to help you get the most out of it.</p> <p>Thanks</p> <p>Kenna Amoah</p>"
-
-
-cancetype = "cancellation"
-
-cancsubject = "cancellation"
-
-cancbody = "<p>Greetings rosie</p> <p>We&rsquo;ve attempted to bill your credit card
-       4 times, but have been unsuccessful. The following is the last response we
-        received when trying to bill your account:</p> <p>Credit card Declined.
-        </p> <p>Please update your payment information to keep your account active 
-        (it'll take less than a minute). To save you some time, here's a direct
-         link to your payment update page .In the meantime, we have disabled your account.
-         </p> <p>Let us know if you need help on how to go about updating your billing information.
-         </p> <p>Thanks,</p> <p>Kennah Amoah</p> "
+            thibody = "<p>Greetings Rosie</p> <p>We just re-tried to charge your card for a 
+                  third time, but it failed for the following reason:</p> <p>Card Declined.</p> 
+                  <p>&nbsp;Most of the time this is due to <em><strong>expired credit card</strong></em> or
+                   a recently <em><strong>changed billing address.</strong></em></p> 
+                   <p>Please update your payment information to keep your account active
+                    (it'll take less than a minute). To save you some time, h
+                    ere's a direct link to your payment update page </p> <p>
+                    Thanks so much for choosing Kudobuzz.&nbsp; Let us know if there's anything
+                     else we can do to help you get the most out of it.</p> <p>Thanks</p> <p>Kenna Amoah</p>"
 
 
-thirtytype = "thirty day expiry notice "
+            cancetype = "cancellation"
 
-thirtysubject = "Expiry Notice"
+            cancsubject = "cancellation"
 
-thirtybody = ">Hi Rosie</p> <p>Your Visa card ending in 4242, which is
-       used to process payments for the Pro Plan on Kudobuzz will expire at the
-       end of this month(in 30 days).</p> <p>If you have a moment,
-       please update your payment information (it'll take less than a minute) 
-       using this link </p>
-       <p>Thanks for being a Kudobuzzcustomer!</p> <p>Kennah Amoah</p> <p>&nbsp;</p> "
-
-
-
-
-sevetype = "seven day expiry"
-
-sevesubject = "Expiry Notice"
+            cancbody = "<p>Greetings rosie</p> <p>We&rsquo;ve attempted to bill your credit card
+                   4 times, but have been unsuccessful. The following is the last response we
+                    received when trying to bill your account:</p> <p>Credit card Declined.
+                    </p> <p>Please update your payment information to keep your account active 
+                    (it'll take less than a minute). To save you some time, here's a direct
+                     link to your payment update page .In the meantime, we have disabled your account.
+                     </p> <p>Let us know if you need help on how to go about updating your billing information.
+                     </p> <p>Thanks,</p> <p>Kennah Amoah</p> "
 
 
-sevbody = "Hi Rosie</p> <p>Your Visa card ending in 4242, 
-      which is used to process payments for the Pro Plan on Kudobuzz
-      will expire at the end of this month (in 7 days) .</p> 
-      <p>If you have a moment, please update your payment information
-      in order to continue enjoying our services.(it'll take less than a minute)
-      using this link 
-      .</p>
-      <p>Thanks for being a Kudobuzz customer!</p> <p>Kennah Amoah</p> 
-      "
-        current_user.email_templates.create(etype: fifetype,subject: fifsubject,body: fifbody)
-        current_user.email_templates.create(etype: firstetype,subject: firstsubject,body: firstbody)
-        current_user.email_templates.create(etype: secetpe,subject: secsubject,body: secbody)
-        current_user.email_templates.create(etype: thietye,subject: thisubject,body: thibody)
-        current_user.email_templates.create(etype: cancetype,subject: cancsubject,body: cancbody)
-        current_user.email_templates.create(etype: thirtytype,subject: thirtysubject,body: thirtybody)
-        current_user.email_templates.create(etype: sevetype,subject: sevetype,body: sevbody)
+            thirtytype = "thirty day expiry notice "
+
+            thirtysubject = "Expiry Notice"
+
+            thirtybody = ">Hi Rosie</p> <p>Your Visa card ending in 4242, which is
+                   used to process payments for the Pro Plan on Kudobuzz will expire at the
+                   end of this month(in 30 days).</p> <p>If you have a moment,
+                   please update your payment information (it'll take less than a minute) 
+                   using this link </p>
+                   <p>Thanks for being a Kudobuzzcustomer!</p> <p>Kennah Amoah</p> <p>&nbsp;</p> "
+
+
+
+
+            sevetype = "seven day expiry"
+
+            sevesubject = "Expiry Notice"
+
+
+            sevbody = "Hi Rosie</p> <p>Your Visa card ending in 4242, 
+                  which is used to process payments for the Pro Plan on Kudobuzz
+                  will expire at the end of this month (in 7 days) .</p> 
+                  <p>If you have a moment, please update your payment information
+                  in order to continue enjoying our services.(it'll take less than a minute)
+                  using this link 
+                  .</p>
+                  <p>Thanks for being a Kudobuzz customer!</p> <p>Kennah Amoah</p> 
+                  "
+          current_user.email_templates.create(etype: fifetype,subject: fifsubject,body: fifbody)
+          current_user.email_templates.create(etype: firstetype,subject: firstsubject,body: firstbody)
+          current_user.email_templates.create(etype: secetpe,subject: secsubject,body: secbody)
+          current_user.email_templates.create(etype: thietye,subject: thisubject,body: thibody)
+          current_user.email_templates.create(etype: cancetype,subject: cancsubject,body: cancbody)
+          current_user.email_templates.create(etype: thirtytype,subject: thirtysubject,body: thirtybody)
+          current_user.email_templates.create(etype: sevetype,subject: sevetype,body: sevbody)
       end
   		user_path(current_user.id)
   	else
