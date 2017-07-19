@@ -129,11 +129,15 @@ class User < ApplicationRecord
   def saveRiskyCustomers(user)
 
     retrieveRiskyCustomer(user).each do |customer|
+      expiryMonth = customer["sources"]["data"][0]["exp_month"]
+      expiryYear = customer["sources"]["data"][0]["exp_year"]
 
+      if Date.today.day < 15
       planName = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["name"]
       amount = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["amount"]
       custId = customer["id"]
-      user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId)  
+      rlevel = "risky"
+      user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel)  
     end
 
   end
