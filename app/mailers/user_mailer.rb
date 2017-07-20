@@ -14,4 +14,12 @@ class UserMailer < ApplicationMailer
 	   	  subject: esubject
     end
 
+    def expiry_notice(user,customer_email,esubject)
+    	@customer_email = customer_email
+
+    	mail from: user,
+	    	   to: @customer_email,
+	   	  subject: esubject
+    end
+
 end

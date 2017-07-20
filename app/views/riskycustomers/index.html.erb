@@ -196,7 +196,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                    
+
                                         <% @riskycustomers.each do |riskycustomer|%>
                                             <tr>
                                                 <td><%= riskycustomer.email%></td>
@@ -205,7 +205,7 @@
                                                 <td><%= riskycustomer.rlevel%></td>  
                                                 <td><%= riskycustomer.plan%></td>
                                                 <td><%= riskycustomer.amount/100%></td>
-                                                <td> <%= link_to 'Recover',riskycustomers_path, class: "btn btn-info btn-rounded"%></td>    
+                                                <td> <%= button_to 'Recover',sendemails_path, :method =>'post',class: "btn btn-info btn-rounded",params: {email: riskycustomer.email,risklevel: riskycustomer.rlevel}%></td>    
                                             </tr>
                                         <%end%>    
                                         </tbody>
