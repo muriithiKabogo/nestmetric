@@ -2,7 +2,15 @@ class RiskycustomersController < ApplicationController
   before_action :authenticate_user!
   def index
   	@user = current_user
-  	@riskycustomers = @user.riskycustomers
+    if @user.riskycustomers.count == 0
+      #@user.saveRiskyCustomers(@user)
+      @riskycustomers = @user.riskycustomers
+      render stream: true
+    else
+     @riskycustomers = @user.riskycustomers
+     render stream: true
+    end
+
   end
 
   def new

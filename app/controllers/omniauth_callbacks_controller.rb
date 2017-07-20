@@ -8,13 +8,20 @@ class OmniauthCallbacksController < ApplicationController
       access_code: request.env["omniauth.auth"].credentials.token,
       publishable_key: request.env["omniauth.auth"].info.stripe_publishable_key
     })
-      # anything else you need to do in response..
-      redirect_to users_path
+
+      # anything euser_email_templates_path(current_user.id)lse you need to do in response..
+      redirect_to user_email_templates_path(current_user.id)
       #set_flash_message(:notice, :success, :kind => "Stripe") if is_navigational_format?
     else
       session["devise.stripe_connect_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
+
+    if @user.riskycustomers.count == 0
+      #@user.saveRiskyCustomers(@user)
+      GetRiskyCustomersJob.perform_later(@user)
+    end
+    
   end
 
   def failure

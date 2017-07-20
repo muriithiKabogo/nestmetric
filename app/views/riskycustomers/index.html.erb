@@ -187,17 +187,25 @@
                                             <tr>
                                             
                                                 <th>Email</th>
+                                                <th>Expiry Month</th>
+                                                <th>Expiry Year</th>
+                                                <th>Risk Level</th>
                                                 <th>Plan</th>
                                                 <th>Revenue at risk($)</th>
                                                 
                                             </tr>
                                         </thead>
                                         <tbody>
+                                    
                                         <% @riskycustomers.each do |riskycustomer|%>
                                             <tr>
                                                 <td><%= riskycustomer.email%></td>
+                                                <td><%= riskycustomer.expiryMonth%></td>
+                                                <td><%= riskycustomer.expiryYear%></td>
+                                                <td><%= riskycustomer.rlevel%></td>  
                                                 <td><%= riskycustomer.plan%></td>
-                                                <td><%= riskycustomer.amount/100%></td>    
+                                                <td><%= riskycustomer.amount/100%></td>
+                                                <td> <%= link_to 'Recover',riskycustomers_path, class: "btn btn-info btn-rounded"%></td>    
                                             </tr>
                                         <%end%>    
                                         </tbody>

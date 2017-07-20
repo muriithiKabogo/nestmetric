@@ -2,8 +2,9 @@ class EmailTemplatesController < ApplicationController
 	before_action :authenticate_user!
   def index
   	@user = current_user
+    #GetRiskyCustomersJob.perform_later(@user)
   	@email_templates = @user.email_templates.all
-   @email_template = @user.email_templates.where(params[:id])
+    @email_template = @user.email_templates.where(params[:id])
   end
 
 

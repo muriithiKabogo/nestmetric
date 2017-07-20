@@ -129,15 +129,28 @@ class User < ApplicationRecord
   def saveRiskyCustomers(user)
 
     retrieveRiskyCustomer(user).each do |customer|
-      expiryMonth = customer["sources"]["data"][0]["exp_month"]
-      expiryYear = customer["sources"]["data"][0]["exp_year"]
-
-      if Date.today.day < 15
       planName = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["name"]
       amount = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["amount"]
+      expiryMonth = customer["sources"]["data"][0]["exp_month"]
+      expiryYear = customer["sources"]["data"][0]["exp_year"]
       custId = customer["id"]
       rlevel = "risky"
-      user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel)  
+      riskierl = "riskier"
+      riskiestl = "riskiest"
+
+      if Date.today.day < 15
+
+        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel, expiryMonth: expiryMonth, expiryYear: expiryYear)
+      
+      elsif Date.today.day >= 15 && Date.today.day < 22
+        
+        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskierl, expiryMonth: expiryMonth, expiryYear: expiryYear)
+      
+      else
+        
+        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskiestl, expiryMonth: expiryMonth, expiryYear: expiryYear)
+      end
+
     end
 
   end
