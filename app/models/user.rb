@@ -138,6 +138,7 @@ class User < ApplicationRecord
       custId = customer["id"]
       rlevel = "risky"
       user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel)  
+      end
     end
 
   end
