@@ -151,9 +151,6 @@ class User < ApplicationRecord
         user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskiestl, expiryMonth: expiryMonth, expiryYear: expiryYear)
       end
 
-      user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel)  
-      end
-      
     end
 
   end
