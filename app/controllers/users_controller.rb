@@ -8,11 +8,11 @@ class UsersController < ApplicationController
 
   	@email_template = EmailTemplate.new
   	@email_templates = @user.email_templates.all
-    # @allfailed  = failed_charges_last_30_days.length
-    # @cancellation = all_cancellation_for_last_30_days.length
+    @allfailed  = failed_charges_last_30_days.length
+    @cancellation = all_cancellation_for_last_30_days.length
 
-    # @riskycustomers = @user.riskycustomers.order(:created_at).reverse
-    # @riskycustomers =@riskycustomers[0..4]
+    @riskycustomers = @user.riskycustomers.order(:created_at).reverse
+    @riskycustomers =@riskycustomers[0..4]
   end
 
   def show

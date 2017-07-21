@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Admin Responsive web app kit</title>
+<%= javascript_include_tag "card.js" %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body style="margin:0px; background: #f8f8f8; ">
 <div width="100%" style="background: #f8f8f8; padding: 0px 0px; font-family:arial; line-height:28px; height:100%;  width: 100%; color: #514d6a;">
@@ -58,7 +60,7 @@
 </div>
 
 
-    <%= javascript_include_tag "card.js" %>
+   
     <script>
         new Card({
             form: document.querySelector('form'),
