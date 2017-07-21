@@ -120,10 +120,10 @@
                     <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
 
                     <!-- <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
-                  </ul> </li>
+                  </ul> </li>-->
 
-                    <li> <a href="widgets.html" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
-                  </ul> </li> -->
+                    <li> <a href="/users/<%=@user.id%>/edit" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
+                  </ul> </li> 
                 </ul>
             </div>
         </div>
@@ -217,16 +217,16 @@
                             <div class="panel-heading">LIVE STREAM</div>
                             <div class="panel-body">
                                 <div class="steamline">
-                                <% @riskycustomers.each do |riskycustomer|%>
+                                
                                     <div class="sl-item">
                                        <span class="label label-rouded label-danger">EXPIRY IN 30 DAYS</span>
                                         <br/>
                                         <div class="sl-right">
-                                            <div><a href="#"><%=riskycustomer.email%></a> <span class="sl-date"></span></div>
-                                            <div class="desc"><%=riskycustomer.plan%> - $ <%=riskycustomer.amount/100%></div>
+                                            <div><a href="#"></a> <span class="sl-date"></span></div>
+                                            <div class="desc"></div>
                                         </div>
                                     </div>
-                                <%end%>
+                                
 
                                     <!-- <div class="sl-item">
                                        <span class="label label-rouded label-info">EXPIRY IN 30 DAYS</span> <br/> 

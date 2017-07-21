@@ -1,10 +1,6 @@
-<!-- <h1>Riskycustomers</h1>
-
-<%=@riskycustomers%> -->
-
 <head>
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
-<%= stylesheet_link_tag "dashboard/bootstrap.css" %>
+<%= stylesheet_link_tag "dashboard/bootstrap.css" %> 
 <%= javascript_include_tag 'application' %>
 </head>
 <body class="fix-header">
@@ -37,7 +33,7 @@
                 <ul class="nav navbar-top-links navbar-left">
                     
                     <li class="dropdown">
-                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> 
+                        <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"> <i class="mdi mdi-gmail"></i>
                             <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
                         </a>
                         <ul class="dropdown-menu mailbox animated bounceInDown">
@@ -77,33 +73,12 @@
                     <!-- .Task dropdown -->
                    
                                    </ul>
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        
-                    </li>
+                 <ul class="nav navbar-top-links navbar-right pull-right">
+                    
                     <li class="dropdown">
-                        <!--<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> 
-                        <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"> -->
-                        <b class="hidden-xs">Steave</b><span class="caret"></span> </a>
-                        <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><img src="../plugins/images/users/varun.jpg" alt="user" /></div>
-                                    <div class="u-text">
-                                        <h4>Steave Jobs</h4>
-                                        <p class="text-muted">varun@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                </div>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
-                        </ul>
-                        <!-- /.dropdown-user -->
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <!-- <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle">--><b class="hidden-xs"  style="
+    padding-right: 40px;
+">logout</b><!-- <span class="caret"></span> --> </a>
                     </li>
                     <!-- /.dropdown -->
                 </ul>
@@ -124,33 +99,32 @@
                     
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li>
-                     <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>       
+                    <li> 
+
+                     <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>
+                        
                     </li>
                   
-                    <li><a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu">Your Templates</span></a>
-                       <!-- <ul class="nav nav-second-level">
-                            <li><a><span class="hide-menu"> <%=link_to 'Predunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a>
-                            </li>                   
-                           <li><a ><span class="hide-menu"><%=link_to 'Dunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
+                    <li><a href="inbox.html" class="waves-effect"><i class="mdi mdi-apps fa-fw"></i> <span class="hide-menu">Your Templates<span class="fa arrow"></span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Pre-Dunning</span></a></li>
+                           
+                           <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Dunning</span></a></li>
 
-                           <li><a ><span class="hide-menu"><%=link_to 'cancellations',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
+                           <li><a href="compose.html"><i class="ti-comments-smiley fa-fw"></i><span class="hide-menu">Cancellations</span></a></li>
 
-                        </ul> -->
-                    <li><a href="/riskycustomers" class="waves-effect"><span class="hide-menu">Customers</span></a>
-                    </li>      
+                        </ul>
+                    <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-user fa-fw"></i><span class="hide-menu">Customers </span></a>    
                     <ul class="nav nav-second-level">
                   </ul>
                     <li>
-                    
-                    <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
-
-                    <!-- <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
+                    <li><a href="javascript:void(0)" class="waves-effect"><i class=" ti-credit-card fa-fw"></i><span class="hide-menu">Payment Update</span></a> <ul class="nav nav-second-level">
                   </ul> </li>
 
-                    <li> <a href="#" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
-                  </ul> </li> -->
-                  <li> <a href="/users/<%=@user.id%>/edit" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
+                    <li><a href="javascript:void(0)" class="waves-effect"><i class="ti-agenda fa-fw"></i><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
+                  </ul> </li>
+
+                    <li> <a href="widgets.html" class="waves-effect"><i  class="mdi mdi-settings fa-fw"></i> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
                   </ul> </li>
                 </ul>
             </div>
@@ -162,77 +136,83 @@
         <!-- Page Content -->
         <!-- ============================================================== -->
         <!-- Page Content -->
-        <div id="page-wrapper">
+         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Customers </h4> </div>
+                        <h4 class="page-title">Profile page</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        
-                        
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Customers</li>
+                            <li><a href="#">Sample Pages</a></li>
+                            <li class="active">Profile page</li>
                         </ol>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- row list-->
+                <!-- /.row -->
+                <!-- .row -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8 col-xs-12">
                         <div class="white-box">
-                            <h3 class="box-title">Risky Customers</h3>
-                            <div class="scrollable">
-                                <div class="table-responsive">
-                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10" >
-                                        <thead>
-                                            <tr>
-                                            
-                                                <th>Email</th>
-                                                <th>Expiry Month</th>
-                                                <th>Expiry Year</th>
-                                                <th>Risk Level</th>
-                                                <th>Plan</th>
-                                                <th>Revenue at risk($)</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        <% @riskycustomers.each do |riskycustomer|%>
-                                            <tr>
-                                                <td><%= riskycustomer.email%></td>
-                                                <td><%= riskycustomer.expiryMonth%></td>
-                                                <td><%= riskycustomer.expiryYear%></td>
-                                                <td><%= riskycustomer.rlevel%></td>  
-                                                <td><%= riskycustomer.plan%></td>
-                                                <td><%= riskycustomer.amount/100%></td>
-                                                <td> <%= button_to 'Recover',sendemails_path, :method =>'post',class: "btn btn-info btn-rounded",params: {email: riskycustomer.email,risklevel: riskycustomer.rlevel}%></td>    
-                                            </tr>
-                                        <%end%>    
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <td colspan="2">
-                                                    
-                                                </td>
-                                                <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        
-                                                        
-                                                        </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                </div>
-                                                <td colspan="7">
-                                                    <div class="text-right">
-                                                        <ul class="pagination"> </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                            <ul class="nav nav-tabs tabs customtab">
+                              <li class="tab">
+                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Settings</span> </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="home">
+                                    <div class="steamline">
+                                        <div class="sl-item">
+                                            <div class="sl-left"> <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" /> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane active" id="settings">
+                                    <form class="form-horizontal form-material">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Full Name</label>
+                                            <div class="col-md-12">
+                                                <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="example-email" class="col-md-12">Email</label>
+                                            <div class="col-md-12">
+                                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Password</label>
+                                            <div class="col-md-12">
+                                                <input type="password" value="password" class="form-control form-control-line"> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Phone No</label>
+                                            <div class="col-md-12">
+                                                <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Message</label>
+                                            <div class="col-md-12">
+                                                <textarea rows="5" class="form-control form-control-line"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12">Select Country</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control form-control-line">
+                                                    <option>London</option>
+                                                    <option>India</option>
+                                                    <option>Usa</option>
+                                                    <option>Canada</option>
+                                                    <option>Thailand</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success">Update Profile</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -302,7 +282,7 @@
                 <!-- ============================================================== -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Nestmetric </footer>
+            <footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by themedesigner.in </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

@@ -135,6 +135,7 @@ class User < ApplicationRecord
       expiryYear = customer["sources"]["data"][0]["exp_year"]
       custId = customer["id"]
       rlevel = "risky"
+<<<<<<< HEAD
       riskierl = "riskier"
       riskiestl = "riskiest"
 
@@ -151,6 +152,10 @@ class User < ApplicationRecord
         user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskiestl, expiryMonth: expiryMonth, expiryYear: expiryYear)
       end
 
+=======
+      user.riskycustomers.find_or_create_by_customerId(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel)  
+      end
+>>>>>>> 2fa574e6993f0694e8e074dc8bab361b655e6f27
     end
 
   end
