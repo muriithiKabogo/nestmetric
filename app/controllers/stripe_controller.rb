@@ -50,5 +50,22 @@ class StripeController < ApplicationController
     end
   end
 
+  def customer_source_updated
+    @user = User.find_by_uid(params[:account])
+
+    if @user.riskycustomers != 0
+        @user.riskycustomers.each do |riskycustomer|
+           customerDetails = Stripe::Customer.retrieve(riskycustomer.customerId)
+           expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
+           expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
+           if expiryYear > riskycustomer.expiryYear && riskycustomer.emailsent == true
+             riskycustomer.rlevel = "recovered"
+             riskycustomer.save
+           end
+        end
+    end
+    
+  end
+
 end
 
