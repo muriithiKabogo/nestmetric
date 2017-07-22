@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :riskycustomers
   resources :sendemails
+  resources :cardupdates
  
   post 'stripe/webhook'
   post 'stripe/failed_charge'
