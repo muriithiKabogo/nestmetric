@@ -30,6 +30,7 @@ Rails.application.config.assets.precompile += %w( dashboard/spinners.css)
 Rails.application.config.assets.precompile += %w( dashboard/materialdesignicons.min.css )
 Rails.application.config.assets.precompile += %w( dashboard/bootstrap.css )
 Rails.application.config.assets.precompile += %w( dashboard/card.css )
+Rails.application.config.assets.precompile += %w( dashboard/custom.css )
 
 Rails.application.config.assets.precompile += %w( dashboard/bootstrap-wysihtml5.css )
 Rails.application.config.assets.precompile += %w( dashboard/dropzone.css )
@@ -44,3 +45,5 @@ Rails.application.config.assets.precompile += %w( jquery.slimscroll.js )
 
 Rails.application.config.assets.precompile += %w( card.css )
 Rails.application.config.assets.precompile += %w( card.js )
+Rails.application.config.assets.precompile += %w( stripe.js)
+

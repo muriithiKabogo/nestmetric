@@ -1,97 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="viewport" content="width=device-width" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Admin Responsive web app kit</title>
-<%= javascript_include_tag "card.js" %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+<%= javascript_include_tag "https://js.stripe.com/v3" %>
+<%= stylesheet_link_tag "dashboard/custom.css"%>
+
 </head>
-<body style="margin:0px; background: #f8f8f8; ">
-<div width="100%" style="background: #f8f8f8; padding: 0px 0px; font-family:arial; line-height:28px; height:100%;  width: 100%; color: #514d6a;">
-  <div style="max-width: 700px; padding:50px 0;  margin: 0px auto; font-size: 14px">
-    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
-      <tbody>
-        <tr>
-         <!--  <td style="vertical-align: top; padding-bottom:30px;" align="center"><a href="javascript:void(0)" target="_blank"><img src="../plugins/images/admin-logo-dark.png" alt="Admin Responsive web app kit" style="border:none"><br/>
-            <img src="../plugins/images/admin-text-dark.png" alt="admin Responsive web app kit" style="border:none"></a> </td> -->
-        </tr>
-      </tbody>
-    </table>
-    <style>
-        .demo-container {
-            width: 100%;
-            max-width: 350px;
-            margin: 50px auto;
-        }
-        form {
-            margin: 30px;
-        }
-        input {
-            width: 200px;
-            margin: 10px auto;
-            display: block;
-        }
-    </style> 
-    <div style="padding: 40px; background: #fff;">
 
-    <div class="col-sm-9">
-    <div class="white-box">
-    <div class="form-group">
-    <!-- <div class="demo-container"> --> 
-        <div class="card-wrapper"></div>
-
-        <div class="form-container active">
-            <form action="">
-              
-                 <input type="tel" class="form-control" id="inputName" placeholder="Card Number" name="number" required> 
-                 
-                 <input type="text" class="form-control" id="inputName" placeholder="Fullname" name="name" required> 
-                  
-                 <input type="tel" class="form-control" id="inputName" placeholder="MM/YY" required name="expiry"> 
-                  
-                 <input type="number" class="form-control" id="inputName" placeholder="CVC" name= "cvc" required> 
-
-            </form>
-            <button type="submit" class="btn btn-success">Update card details</button>
-        </div>
-    
-</div>
-</div>
-
-
-   
-    <script>
-        new Card({
-            form: document.querySelector('form'),
-            container: '.card-wrapper'
-        });
-    </script>
-      <!-- <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
-        <tbody>
-          <tr>
-            <td style="border-bottom:1px solid #f6f6f6;"><h1 style="font-size:14px; font-family:arial; margin:0px; font-weight:bold;">Dear Sir/Madam/Customer,</h1>
-              <p style="margin-top:0px; color:#bbbbbb;">Here are your password reset instructions.</p></td>
-          </tr>
-          <tr>
-            <td style="padding:10px 0 30px 0;"><p>A request to reset your Admin password has been made. If you did not make this request, simply ignore this email. If you did make this request, please reset your password:</p>
-              <center>
-                <a href="javascript: void(0);" style="display: inline-block; padding: 11px 30px; margin: 20px 0px 30px; font-size: 15px; color: #fff; background: #00c0c8; border-radius: 60px; text-decoration:none;">Reset Password</a>
-              </center>
-              <b>- Thanks (Admin team)</b> </td>
-          </tr>
-          <tr>
-            <td  style="border-top:1px solid #f6f6f6; padding-top:20px; color:#777">If the button above does not work, try copying and pasting the URL into your browser. If you continue to have problems, please feel free to contact us at info@themedesigner.in</td>
-          </tr>
-        </tbody>
-      </table> -->
-    </div>
-     <!-- <footer class="footer text-center"> 2017 &copy; Nestmetric  </footer> -->
-     <div style="text-align: center; font-size: 12px; color: #b2b2b5; margin-top: 20px">
-      <p> Powered by Stripe and Nestmetric <br>
-        <a href="javascript: void(0);" style="color: #b2b2b5; text-decoration: underline;">Nestmetric</a> </p>
-    </div> 
+<form action="/riskycustomers/create" method="post" >
+<%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+  <div class="group">
+    <label>
+      <span>Name</span>
+      <input name="cardholder-name" class="field" placeholder="Jane Doe" />
+    </label>
+    <label>
+      <span>Phone</span>
+      <input class="field" placeholder="(123) 456-7890" type="tel" />
+    </label>
   </div>
-</div>
-</body>
-</html>
+  <div class="group">
+    <label>
+      <span>Card</span>
+      <div id="card-element" class="field"></div>
+    </label>
+  </div>
+  <button type="submit">Pay $25</button>
+  <div class="outcome">
+    <div class="error" role="alert"></div>
+    <div class="success">
+      Success! Your Stripe token is <span class="token"></span>
+    </div>
+  </div>
+</form>
+
+<%= javascript_include_tag "stripe.js" %>
