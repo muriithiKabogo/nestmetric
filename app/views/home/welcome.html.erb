@@ -3,7 +3,7 @@
 <%= stylesheet_link_tag "landingpage/core.min.css" %>
 <%= stylesheet_link_tag "landingpage/thesaas.min.css" %>
 <%= stylesheet_link_tag "landingpage/style.css" %>
-
+<%= stylesheet_link_tag "dashboard/home.css"%>
 </head>
 <body>
 	<!-- Topbar -->
@@ -18,9 +18,9 @@
         </div>
 
 
-        <div class="topbar-right">
+        <div class="topbar-right mysigninbutton">
           <b><%=link_to 'Sign up ', new_user_registration_path, class: 'btn btn-lg btn-success ' %></b>
-          <b><%=link_to 'Sign in', new_user_registration_path, class: ' btn btn-lg btn-success ' %></b>
+          <b><%=link_to 'Sign in', new_user_registration_path, class: ' btn btn-lg btn-success' %></b>
         </div>
 
       </div>
