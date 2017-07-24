@@ -17,6 +17,7 @@ var card = elements.create('card', {
     },
   }
 });
+
 card.mount('#card-element');
 
 function setOutcome(result) {

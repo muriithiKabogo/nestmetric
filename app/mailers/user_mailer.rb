@@ -7,9 +7,9 @@ class UserMailer < ApplicationMailer
 	    @template = template
 	  	@uid = userAcount
 	  	@custId = custId
-
+	  	@user = user
 	    
-	    mail from: user,
+	    mail from: @user,
 	    	   to: @customer_email,
 	   	  subject: esubject
     end

@@ -31,6 +31,7 @@ Rails.application.config.assets.precompile += %w( dashboard/materialdesignicons.
 Rails.application.config.assets.precompile += %w( dashboard/bootstrap.css )
 Rails.application.config.assets.precompile += %w( dashboard/card.css )
 Rails.application.config.assets.precompile += %w( dashboard/custom.css )
+Rails.application.config.assets.precompile += %w( dashboard/home.css )
 
 Rails.application.config.assets.precompile += %w( dashboard/bootstrap-wysihtml5.css )
 Rails.application.config.assets.precompile += %w( dashboard/dropzone.css )
