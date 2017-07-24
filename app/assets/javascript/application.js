@@ -12,16 +12,3 @@
 
 //= require rails-ujs
 
-//= require jquery.min.js
-//= require bootstrap.min.js
-//= require sidebar-nav.min.js
-//= require jquery.slimscroll.js
-//= require waves.js
-//= require jquery.waypoints.js
-//= require jquery.counterup.min.js
-//= require chartist.min.js
-//= require chartist-plugin-tooltip.min.js
-//= require jquery.sparkline.min.js
-//= require custom.min.js
-//= require jquery.toast.js
-//= require turbolinks
