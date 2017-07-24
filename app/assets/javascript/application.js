@@ -10,4 +10,3 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
-<%= javascript_include_tag "application" %>
