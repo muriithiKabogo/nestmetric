@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
   	resources :email_templates
   end
+  get  'riskycustomers/customer'
   resources :riskycustomers
   resources :sendemails
   resources :cardupdates
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   post 'stripe/webhook'
   post 'stripe/failed_charge'
   post 'stripe/invoice_payment_failed'
+  
+
 
   
 end
