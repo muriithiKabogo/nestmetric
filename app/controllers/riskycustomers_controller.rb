@@ -4,17 +4,17 @@ class RiskycustomersController < ApplicationController
   
   def customer
 
-    # if Rails.env.production?
-    #      Stripe.api_key = ENV['Javier_user_Secret_Key'] #@user.access_code
-    #   else
-    #      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    #   end
+    if Rails.env.production?
+         Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO'] #@user.access_code
+      else
+         Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      end
 
-    #   token = cookies[:myToken]
-    #   customer = Stripe::Customer.retrieve()
-    #   customer.source = token 
-    #   customer.save
-    #   redirect_to root_path
+      token = cookies[:myToken]
+      customer = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc")
+      customer.source = token 
+      customer.save
+      redirect_to root_path
 
   end
 
