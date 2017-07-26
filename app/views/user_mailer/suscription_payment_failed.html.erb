@@ -22,7 +22,7 @@
             <td>
               <%= @template.html_safe %>
 
-              <p><%= link_to 'Update credit card', edit_cardupdate_url(id: 1,uid: @uid) %></p>
+<p><%= link_to 'Update credit card', edit_cardupdate_url(id: @userId,uid: @uid,custid: @custId) %></p>
 
               </td>
           </tr>

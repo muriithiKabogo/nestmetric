@@ -1,5 +1,24 @@
 class RiskycustomersController < ApplicationController
+
   before_action :authenticate_user!
+  
+  def customer
+
+    if Rails.env.production?
+         Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO'] #@user.access_code
+      else
+         Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      end
+
+      token = cookies[:myToken]
+      customer = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc")
+      customer.source = token 
+      customer.save
+      redirect_to root_path
+
+  end
+
+
   def index
   	@user = current_user
     if @user.riskycustomers.count == 0
@@ -14,6 +33,7 @@ class RiskycustomersController < ApplicationController
   end
 
   def new
+
   	@user = current_user
   	 # @user = User.find_by_uid(params[:uid])
 
@@ -22,9 +42,9 @@ class RiskycustomersController < ApplicationController
   	 # @customer_email = Stripe::Customer.retrieve(params[:custId])
     #  @customer_email = @customer_email[:email]
     #  puts @customer_email.class
-  end
+    
+    @user = User.find_by_uid(params[:uid])
 
-  def create
 
   end
 

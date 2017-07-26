@@ -1,12 +1,11 @@
 <head>
-
 <%= stylesheet_link_tag "landingpage/core.min.css" %>
 <%= stylesheet_link_tag "landingpage/thesaas.min.css" %>
 <%= stylesheet_link_tag "landingpage/style.css" %>
 <%= stylesheet_link_tag "dashboard/home.css"%>
 </head>
 <body>
-	<!-- Topbar -->
+	<!-- Topbar...... -->
     <nav class="topbar topbar-expand-sm topbar-sticky">
       <div class="container">
         
@@ -20,7 +19,7 @@
 
         <div class="topbar-right mysigninbutton">
           <b><%=link_to 'Sign up ', new_user_registration_path, class: 'btn btn-lg btn-success ' %></b>
-          <b><%=link_to 'Sign in', new_user_registration_path, class: ' btn btn-lg btn-success' %></b>
+          <b><%=link_to 'Sign in', new_user_session_path, class: ' btn btn-lg btn-success' %></b>
         </div>
 
       </div>

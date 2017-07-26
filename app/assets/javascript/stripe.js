@@ -29,8 +29,13 @@ function setOutcome(result) {
   if (result.token) {
     // Use the token to create a charge or a customer
     // https://stripe.com/docs/charges
+    var myToken = result.token.id
+    console.log("myToken",myToken)
     successElement.querySelector('.token').textContent = result.token.id;
     successElement.classList.add('visible');
+    document.cookie = "myToken="+myToken; 
+    document.location = "/riskycustomers/customer"
+    
   } else if (result.error) {
     errorElement.textContent = result.error.message;
     errorElement.classList.add('visible');
@@ -49,3 +54,5 @@ document.querySelector('form').addEventListener('submit', function(e) {
   };
   stripe.createToken(card, extraDetails).then(setOutcome);
 });
+
+
