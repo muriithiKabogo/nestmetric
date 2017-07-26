@@ -1,4 +1,5 @@
 class RiskycustomersController < ApplicationController
+
   before_action :authenticate_user!
   
   def customer
@@ -17,6 +18,7 @@ class RiskycustomersController < ApplicationController
 
   end
 
+
   def index
   	@user = current_user
     if @user.riskycustomers.count == 0
@@ -31,6 +33,7 @@ class RiskycustomersController < ApplicationController
   end
 
   def new
+
   	@user = current_user
   	 # @user = User.find_by_uid(params[:uid])
 
@@ -40,6 +43,9 @@ class RiskycustomersController < ApplicationController
     #  @customer_email = @customer_email[:email]
     #  puts @customer_email.class
     
+    @user = User.find_by_uid(params[:uid])
+
+
   end
 
 
