@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-	def suscription_payment_failed(custId, userAcount,user,customer_email, template, esubject)
+	def suscription_payment_failed(userId,custId, userAcount,user,customer_email, template, esubject)
 
 		@url  = 'http://example.com/login'
 	    @customer_email = customer_email
@@ -8,6 +8,7 @@ class UserMailer < ApplicationMailer
 	  	@uid = userAcount
 	  	@custId = custId
 	  	@user = user
+	  	@userId = userId
 	    
 	    mail from: @user,
 	    	   to: @customer_email,
