@@ -1,14 +1,15 @@
 <head>
-<%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%= stylesheet_link_tag "dashboard/bootstrap.css" %>
-<%= javascript_include_tag 'application' %>
+<%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
+<%= stylesheet_link_tag "dashboard/style.css" %>
+
 </head>
-</head>
+
 <body class="fix-header">
     <!-- ============================================================== -->
     <!-- Preloader -->
     <!-- ============================================================== -->
-    
     <!-- ============================================================== -->
     <!-- Wrapper -->
     <!-- ============================================================== -->
@@ -18,26 +19,29 @@
         <!-- ============================================================== -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
-                <div class="top-left-part">
-                    <!-- Logo -->
-                    
-                      <%= image_tag "optionB.png" %>
-                     
-                </div>
+                 <div class="top-left-part">
+                 <a class="logo" href="index.html"> 
+            <%= image_tag "optionB.png", class: '' %>
+                  </a>
+                 </div>
+
+
                 <!-- /Logo -->
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-left">
                     
                     <!-- .Task dropdown -->
+                   </ul>
                    
-                                   </ul>
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li class="dropdown">
-                   <b> <%= link_to 'logout', destroy_user_session_path, :method=>'delete', class: 'dropdown-toggle profile-pic',class: 'dropdown-toggle profile-pic',style:'padding-right: 40px;' %></b>
+                
+               <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li class="dropdown"><b>
+                <%= link_to 'logout', destroy_user_session_path,:method => :delete, class: 'dropdown-toggle profile-pic ',style:'padding-right: 40px;' %></b>
                     </li>
                     <!-- /.dropdown -->
                 </ul>
-            </div>
+            </div> 
+
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
             <!-- /.navbar-static-side -->
@@ -48,43 +52,46 @@
         <!-- ============================================================== -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav slimscrollsidebar">
-                <div class="sidebar-head">
-                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3> </div>
+                <!-- <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"></span> <span class="hide-menu">Navigation</span></h3> </div> -->
                 <div class="user-profile">
                     
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li>
-                     <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>       
+                    <li> <a><span class="hide-menu"> <%=link_to 'Dashboard',users_path, class: "waves-effect"%></span></a>
+                        
                     </li>
                   
-                    <li>
-               <a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu">Your Templates</span> </a>
-                       <!--  <ul class="nav nav-second-level">
-                            <li><a href="compose.html"><span class="hide-menu">Pre-Dunning</span></a></li>
-                           
-                           <li><a href="compose.html"><span class="hide-menu">Dunning</span></a></li>
+        <li>
+        <a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu">Your Templates</span> </a>
+<!-- 
+                        <ul class="nav nav-second-level">
+                            <li><a><span class="hide-menu"> <%=link_to 'Predunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a>
+                            </li>                   
+                           <li><a ><span class="hide-menu"><%=link_to 'Dunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
-                           <li><a href="compose.html"><span class="hide-menu">Cancellations</span></a></li>
+                           <li><a ><span class="hide-menu"><%=link_to 'cancellations',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a></li>
 
-                        </ul> -->
-
+                        </ul>
+ -->
                         </li>
-                   <li><a href="/riskycustomers" class="waves-effect"><span class="hide-menu">Customers</span></a>
-                    </li>     
-                    <ul class="nav nav-second-level">
+                    <li>
+                    <a href="/riskycustomers" class="waves-effect"><span class="hide-menu">Customers</span></a>
+                    </li>   
+                    <ul class="nav nav-second-level"> 
                   </ul>
                     <li>
+                    
                     <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
 
-                    <!-- <li><a href="javascript:void(0)" class="waves-effect"><span class="hide-menu">Billing History </span></a> <ul class="nav nav-second-level">
-                  </ul> </li>
+                    <li><a href="/customer_healths" class="waves-effect"><span class="hide-menu">Customer Health</span></a></li>
 
-                    <li> <a href="widgets.html" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
-                  </ul> </li> -->
+                    <li> <a href="/users/<%=@user.id%>/edit" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
+                  </ul> </li> 
                 </ul>
             </div>
         </div>
+        <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- End Left Sidebar -->
         <!-- ============================================================== -->
@@ -129,7 +136,7 @@
                                      <%= form_for ([@user, @user.email_templates.build])  do |f| %>
                                      <div class="form-group">
                                      
-                                     <%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation']], class: "form-control"%></div>
+                                     <%=f.select :etype, [['welcome'], ['first attempt'], ['second attempt'], ['third attempt'], ['cancellation']],{}, class: "form-control"%></div>
 
                                     <div class="form-group">
                                         <%= f.text_field :subject, class: "form-control",placeholder: "Subject:" %> </div>
