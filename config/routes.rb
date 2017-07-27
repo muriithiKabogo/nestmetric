@@ -12,10 +12,13 @@ Rails.application.routes.draw do
   resources :riskycustomers
   resources :sendemails
   resources :cardupdates
+  resources :customer_healths
  
   post 'stripe/webhook'
   post 'stripe/failed_charge'
   post 'stripe/invoice_payment_failed'
+
+
   
 
 
