@@ -15,4 +15,5 @@
 //= require rails-ujs
 //= require chartist.min
 //= require chartist-plugin-tooltip.min
+//= require bootstrap.min
 //= require_tree .
