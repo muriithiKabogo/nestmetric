@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = current_user
     # GetRiskyCustomersJob.perform_later(@user)   
 
-    #GetRiskyCustomersJob.perform_later(@user)   
+    #GetRiskyCustomersJob.perform_......later(@user)   
 
   	@email_template = EmailTemplate.new
   	@email_templates = @user.email_templates.all
