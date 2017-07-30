@@ -16,4 +16,5 @@
 //= require chartist.min
 //= require chartist-plugin-tooltip.min
 //= require bootstrap.min
+//= require jquery.min
 //= require_tree .
