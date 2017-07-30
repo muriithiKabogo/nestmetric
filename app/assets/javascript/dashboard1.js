@@ -14,10 +14,10 @@
 
      //ct-visits
      new Chartist.Line('#ct-visits', {
-         labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+         labels: ['Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'September'],
          series: [
-    [5, 2, 7, 4, 5, 3, 5, 4]
-    , [2, 5, 2, 6, 2, 5, 2, 4]
+    [1, 2, 3, 4, 4, 6, 5, 7]
+    , [5, 5, 4, 3, 3, 2, 2, 1]
   ]
      }, {
          top: 0,
