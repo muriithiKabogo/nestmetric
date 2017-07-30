@@ -11,7 +11,7 @@ Devise.setup do |config|
 
   config.omniauth :stripe_connect,
       ENV['STRIPE_CONNECT_CLIENT_ID_PRO_R'],
-      ENV['STRIPE_SECRET_KEY_R'],
+      ENV['STRIPE_SECRET_KEY_PRO_R'],
       :scope => 'read_write',
       :stripe_landing => 'login'
   else
