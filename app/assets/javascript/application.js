@@ -9,9 +9,6 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-
-
-
 //= require rails-ujs
 //= require chartist.min
 //= require chartist-plugin-tooltip.min

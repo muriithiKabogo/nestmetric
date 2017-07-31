@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :failed_charges
   has_many :cancellations
 
+  mount_uploader :picture, PictureUploader
+
     def send_failed_payment_email
       UserMailer.suscription_payment_failed(self).deliver_now
     end
