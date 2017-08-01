@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     @cancellation = all_cancellation_for_last_30_days.length
 
     @riskycustomers = @user.riskycustomers.order(:created_at).reverse
-    @riskycustomers =@riskycustomers[0..4]
+    @riskycustomers = @riskycustomers[0..4]
+    @revenatrisk = riskyTotal
+
   end
 
   def show
@@ -41,6 +43,16 @@ private
 
   def user_params
     params.require(:user).permit(:email, :picture)
+  end
+
+  def riskyTotal
+      @user = current_user
+      @riskyRevenue = @user.riskycustomers
+      total = 0
+      @riskyRevenue.each do |risky|
+        total = total + risky.amount
+      end
+      total
   end
 
 end
