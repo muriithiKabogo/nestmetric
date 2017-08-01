@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     @riskycustomers = @user.riskycustomers.order(:created_at).reverse
     @riskycustomers = @riskycustomers[0..4]
-    @revenatrisk = riskyTotal
+   
 
   end
 
@@ -45,14 +45,14 @@ private
     params.require(:user).permit(:email, :picture)
   end
 
-  def riskyTotal
-      @user = current_user
-      @riskyRevenue = @user.riskycustomers
-      total = 0
-      @riskyRevenue.each do |risky|
-        total = total + risky.amount
-      end
-      total
-  end
+  # def riskyTotal
+  #     @user = current_user
+  #     @riskyRevenue = @user.riskycustomers
+  #     total = 0
+  #     @riskyRevenue.each do |risky|
+  #       total = total + risky.amount
+  #     end
+  #     total
+  # end
 
 end
