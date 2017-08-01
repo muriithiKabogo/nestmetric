@@ -159,20 +159,20 @@ class User < ApplicationRecord
 
   def stripe_charges_not_paid
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
       #Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     end
     Stripe::Charge.list({limit: 100, paid: false},{stripe_account: uid })
   end
 
   def stripe_cancellation
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
       #Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     end
     begin
       Stripe::Subscription.list({limit: 100,status: 'canceled'},{stripe_account: uid })
