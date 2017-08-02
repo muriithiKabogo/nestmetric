@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
              fifbody = "<p>Hi Rosie</p>
                   <p>Your Visa card ending in 4242, which is used to process payments for 
                   the Pro Plan on Kudobuzz will expire at the end of this month (in 15 days) .</p>
-                  <p>If you have a moment, please update your payment information in order to
+                  <p>If you have a moment,please update your payment information in order to
                    continue enjoying our services.(it'll take less than a minute) using this 
-                  link <%= link_to 'update credit card' ,new_riskycustomer_path%> </p>
+                  link  </p>
                   <p>Thanks for being a Kudobuzz customer!</p>
                   <p>Kennah Amoah</p>"
 

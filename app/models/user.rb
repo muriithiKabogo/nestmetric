@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :failed_charges
   has_many :cancellations
 
+  mount_uploader :picture, PictureUploader
+
     def send_failed_payment_email
       UserMailer.suscription_payment_failed(self).deliver_now
     end
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   def stripe_subscriptions
     
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
       #Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
@@ -157,7 +159,7 @@ class User < ApplicationRecord
 
   def stripe_charges_not_paid
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
       #Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
@@ -167,7 +169,7 @@ class User < ApplicationRecord
 
   def stripe_cancellation
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
       #Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
