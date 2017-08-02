@@ -6,4 +6,9 @@ before_action :authenticate_user!
 		@riskycustomers = @user.riskycustomers
 	end
 
+	def new
+		@user = current_user
+		@riskycustomers = @user.riskycustomers
+	end
+
 end
