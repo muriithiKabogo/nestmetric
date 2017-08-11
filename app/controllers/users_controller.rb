@@ -8,12 +8,12 @@ class UsersController < ApplicationController
 
   	@email_template = EmailTemplate.new
   	@email_templates = @user.email_templates.all
-    # @allfailed  = failed_charges_last_30_days.length
-    # @cancellation = all_cancellation_for_last_30_days.length
+    @allfailed  = failed_charges_thirty_days_ago.length
+    @cancellation = all_cancellation_for_last_30_days.length
 
     @riskycustomers = @user.riskycustomers.order(:created_at).reverse
-    @riskycustomers = @riskycustomers[0..4]
-   
+    @riskycustomers = @riskycustomers   
+    @riskyRevenue = riskyTotal/100
 
   end
 
@@ -45,14 +45,14 @@ private
     params.require(:user).permit(:email, :picture)
   end
 
-  # def riskyTotal
-  #     @user = current_user
-  #     @riskyRevenue = @user.riskycustomers
-  #     total = 0
-  #     @riskyRevenue.each do |risky|
-  #       total = total + risky.amount
-  #     end
-  #     total
-  # end
+  def riskyTotal
+      @user = current_user
+      @riskyRevenue = @user.riskycustomers
+      total = 0
+      @riskyRevenue.each do |risky|
+        total = total + risky.amount
+      end
+      total
+  end
 
 end

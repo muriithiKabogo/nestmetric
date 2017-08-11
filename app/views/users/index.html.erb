@@ -77,16 +77,16 @@
                         </ul>
  -->
                         </li>
-                    <li>
+                    <!-- <li>
                     <a href="/riskycustomers" class="waves-effect"><span class="hide-menu">Customers</span></a>
-                    </li>   
+                    </li>    -->
                     <ul class="nav nav-second-level"> 
                   </ul>
                     <li>
                     
                     <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
 
-                    <li><a href="/customer_healths" class="waves-effect"><span class="hide-menu">Customer Health</span></a></li>
+                    <!-- <li><a href="/customer_healths" class="waves-effect"><span class="hide-menu">Customer Health</span></a></li> -->
 
                     <li> <a href="/users/<%=@user.id%>/edit" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
                   </ul> </li> 
@@ -124,7 +124,7 @@
                                 <li>
                                     <div id="sparklinedash"></div>
                                 </li>
-                                <li class="text-right"> <span class="counter text-success">$ 8500</span></li>
+                                <li class="text-right"> <span class="counter text-success">$8500</span></li>
                             </ul>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                                 <li>
                                     <div id="sparklinedash2"></div>
                                 </li>
-                         <li class="text-right"> <span class="counter text-purple"> $ 3200</span></li>
+                         <li class="text-right"> <span class="counter text-purple"> <%=@riskyRevenue%></span></li>
                             </ul>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <li class="text-right"> <span class="counter text-info">168</span></li>
+                                <li class="text-right"> <span class="counter text-info"><%=@allfailed%> </span></li>
                             </ul>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                                 <li>
                                     <div id="sparklinedash4"></div>
                                 </li>
-                                <li class="text-right"> <span class="text-danger">10</span></li>
+                                <li class="text-right"> <span class="text-danger"><%=@cancellation%> </span></li>
                             </ul>
                         </div>
                     </div>
@@ -165,64 +165,68 @@
                 <!--/.row -->
                 <!--row -->
                 <!-- /.row -->
+                
+                    <!-- row list-->
                 <div class="row">
-                    <div class="col-md-12 col-lg-8 col-sm-12 col-xs-12">
+                    <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Overview</h3>
-                            <ul class="list-inline text-right">
-                                <li>
-                            <h5><i class="fa fa-circle m-r-5 text-info"></i>Cancellation</h5> </li>
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5 text-inverse"></i>Revenue Recovered</h5> </li>
-                            </ul>
-                            <div id="ct-visits" style="height: 405px;">
-                    <%= image_tag "graph.png", class: 'logo-default'%></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">LIVE STREAM</div>
-                            <div class="panel-body">
-                                <div class="steamline">
-                                <%@riskycustomers.each do|customer|%>
-                                    <div class="sl-item">
-                                       <span class="label label-rouded label-danger">EXPIRY IN 30 DAYS</span>
-                                        <br/>
-                                        <div class="sl-right">
-                                            <div><a href="#"></a> <%=customer.email%><br><span class="sl-date"><%=time_ago_in_words(customer.created_at)%> ago</span></div>
-                                            <div class="desc"><%=customer.plan%> - $  <%=customer.amount/100%></div>
-                                        </div>
-                                    </div>
-                                    <%end%>
+                            <h3 class="box-title">Risky Customers</h3>
+                            <div class="scrollable">
+                                <div class="table-responsive">
+                                    <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10" >
+                                        <thead>
+                                            <tr>
+                                            
+                                                <th>Email</th>
+                                                <th>Expiry Month</th>
+                                                <th>Expiry Year</th>
+                                                <th>Risk Level</th>
+                                                <th>Plan</th>
+                                                <th>Revenue at risk($)</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    <!-- <div class="sl-item">
-                                       <span class="label label-rouded label-info">EXPIRY IN 30 DAYS</span> <br/> 
-                                        <div class="sl-right">
-                                            <div><a href="#"></a> Joseline Harnandez <span class="sl-date">5 minutes ago</span></div>
-                                            <div class="desc">Basic plan - $ 50</div>
-                                           
-                                        </div>
-                                    </div>
-                                    <div class="sl-item">
-                                        <span class="label label-rouded label-info">EXPIRY IN 30 DAYS</span>
-                                        <div class="sl-right">
-                                            <div><a href="#">K Michelle</a> <span class="sl-date">5 minutes ago</span></div>
-                                            <div class="desc">hobby plan - $ 100 </div>
-                                        </div>
-                                    </div>
-                                    <div class="sl-item">
-                                        <span class="label label-rouded label-danger">CANCELLED</span>
-                                        <br/>
-                                        <div class="sl-right">
-                                            <div><a href="#">Varun Dhavan</a> <span class="sl-date">5 minutes ago</span></div>
-                                            <div class="desc">hobby plan - $ 100</div>
-                                        </div>
-                                    </div> -->
-                                    
+                                        <% @riskycustomers.each do |riskycustomer|%>
+                                            <tr>
+                                                <td><%= riskycustomer.email%></td>
+                                                <td><%= riskycustomer.expiryMonth%></td>
+                                                <td><%= riskycustomer.expiryYear%></td>
+                                                <td><%= riskycustomer.rlevel%></td>  
+                                                <td><%= riskycustomer.plan%></td>
+                                                <td><%= riskycustomer.amount/100%></td>    
+                                            </tr>
+                                        <%end%>    
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2">
+                                                    
+                                                </td>
+                                                <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        
+                                                        
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                                <td colspan="7">
+                                                    <div class="text-right">
+                                                        <ul class="pagination"> </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- /.row -->
                    
                 </div>
                 <!-- ============================================================== -->

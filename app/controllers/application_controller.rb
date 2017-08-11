@@ -146,11 +146,11 @@ class ApplicationController < ActionController::Base
   def failed_charges_thirty_days_ago
     v = []
     get_charges_not_paid("data").each do |charge|
-      if charge.status == "failed" && Time.at(charge["created"])<= thirty_days_ago
+      if charge.status == "failed" && Time.at(charge["created"])>= thirty_days_ago
         v.push(charge)
       end
     end
-    v.length
+    v
   end
 
   def failed_charges_last_30_days
