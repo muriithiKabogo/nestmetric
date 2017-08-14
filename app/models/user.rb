@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :cancellations
 
   mount_uploader :picture, PictureUploader
+  validate :picture_size
+
+ 
 
     def send_failed_payment_email
       UserMailer.suscription_payment_failed(self).deliver_now
@@ -180,6 +183,15 @@ class User < ApplicationRecord
       print e
     end
   end
+
+   private
+
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end
 
 
 end

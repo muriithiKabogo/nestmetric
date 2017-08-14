@@ -22,16 +22,18 @@ class UsersController < ApplicationController
 
 
   def edit
-    @user =current_user
+    @user = User.find(params[:id])
   end
 
   def update
-
     @user = User.find(params[:id])
-    @user.picture = params[:picture]
-    if @user.update(user_params)
-      redirect_to user_email_templates_path
-    end
+    if @user.update_attributes(user_params)
+        flash[:success]="Successfully updated profile"
+        redirect_to edit_user_path
+      else
+        render 'edit'
+     end
+
 
   end
 

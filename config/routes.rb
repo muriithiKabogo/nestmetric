@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post 'stripe/webhook'
   post 'stripe/failed_charge'
   post 'stripe/invoice_payment_failed'
+  post 'stripe/customer_source_updated'
+
 
 
   

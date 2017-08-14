@@ -195,7 +195,8 @@
                                                 <td><%= riskycustomer.expiryYear%></td>
                                                 <td><%= riskycustomer.rlevel%></td>  
                                                 <td><%= riskycustomer.plan%></td>
-                                                <td><%= riskycustomer.amount/100%></td>    
+                                                <td><%= riskycustomer.amount/100%></td>
+                                                <td> <%= button_to 'Recover',sendemails_path, :method =>'post',class: "btn btn-info btn-rounded",params: {email: riskycustomer.email,risklevel: riskycustomer.rlevel}%></td>    
                                             </tr>
                                         <%end%>    
                                         </tbody>

@@ -11,7 +11,7 @@ class RiskycustomersController < ApplicationController
       end
 
       token = cookies[:myToken]
-      customer = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc")
+      customer = Stripe::Customer.retrieve("cus_B89RZhIIzUYsI5")
       customer.source = token 
       customer.save
       redirect_to root_path
