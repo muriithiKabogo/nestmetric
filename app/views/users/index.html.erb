@@ -84,12 +84,12 @@
                   </ul>
                     <li>
                     
-                    <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li>
+                   <!--  <li><a href="/riskycustomers/new" class="waves-effect"><span class="hide-menu">Payment Update</span></a></li> -->
 
                     <!-- <li><a href="/customer_healths" class="waves-effect"><span class="hide-menu">Customer Health</span></a></li> -->
 
-                    <li> <a href="/users/<%=@user.id%>/edit" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
-                  </ul> </li> 
+                    <!-- li> <a href="/users/<%=@user.id%>/edit" class="waves-effect"> <span class="hide-menu">App Settings </span></a><ul class="nav nav-second-level">
+                  </ul> </li>  -->
                 </ul>
             </div>
         </div>
@@ -117,7 +117,7 @@
                 <!-- ============================================================== -->
                 <!-- .row -->
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <!-- <div class="col-lg-3 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">recovered</h3>
                             <ul class="list-inline two-part">
@@ -127,8 +127,8 @@
                                 <li class="text-right"> <span class="counter text-success"></span></li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                    </div> -->
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Revenue at risk</h3>
                             <ul class="list-inline two-part">
@@ -139,7 +139,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Failed charges</h3>
                             <ul class="list-inline two-part">
@@ -150,7 +150,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Cancellations</h3>
                             <ul class="list-inline two-part">
@@ -196,7 +196,7 @@
                                                 <td><%= riskycustomer.rlevel%></td>  
                                                 <td><%= riskycustomer.plan%></td>
                                                 <td><%= riskycustomer.amount/100%></td>
-                                                <td> <%= button_to 'Recover',sendemails_path, :method =>'post',class: "btn btn-info btn-rounded",params: {email: riskycustomer.email,risklevel: riskycustomer.rlevel}%></td>    
+                                                    
                                             </tr>
                                         <%end%>    
                                         </tbody>
