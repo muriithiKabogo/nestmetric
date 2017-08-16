@@ -1,12 +1,15 @@
 class UserMailer < ApplicationMailer
 
-	def suscription_payment_failed(userId,custId, userAcount,user,customer_email, template, esubject)
+	def suscription_payment_failed(last4, plan, userId, userAcount,user,customer_email, template, esubject)
 
-		@url  = 'http://example.com/login'
 	    @customer_email = customer_email
+	   	#Todo a function that formats he template based on the variables userId
+
 	    @template = template
+	    @plan = plan
+	    @template = @template.gsub("{{customer-email}}",@customer_email)
+	    @template = @template.gsub("{{planName}}", @plan)
 	  	@uid = userAcount
-	  	@custId = custId
 	  	@user = user
 	  	@userId = userId
 	    
