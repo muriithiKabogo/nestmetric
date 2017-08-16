@@ -25,32 +25,38 @@ class StripeController < ApplicationController
     attempt = params[:data][:object][:attempt_count]
     customerId = customer_data[:object][:customer]
     customerPlan = customer_data[:object][:lines][:data][0][:plan][:id]
+    chargeID = customer_data[:object][:charge]
 
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    customer_data = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc")
+    customer_data = Stripe::Customer.retrieve(customerId) #"cus_AgI34MFkZad9mc"
+    chargeData = Stripe::Charge.retrieve(chargeID) #"ch_1ArPKKEv2HD4YYepax5YYSBS"
     customer_email = customer_data[:email]
     customer_last4 = customer_data[:sources][:data][0][:last4]
-    custId = "cus_AgI34MFkZad9mc"
+    reason  = chargeData[:failure_message]
+
 
     puts customer_email
     puts customerPlan
     puts customer_last4
+    puts chargeID
+    puts customerId
+    puts reason
     if @user.uid == params[:account] && attempt == 1
       @email_template = EmailTemplate.find_by_etype("first attempt")
-      UserMailer.suscription_payment_failed(customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
 
     elsif @user.uid == params[:account] && attempt == 2
 
       @email_template = EmailTemplate.find_by_etype("second attempt")
-      UserMailer.suscription_payment_failed(customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     elsif @user.uid == params[:account] && attempt == 3
 
       @email_template = EmailTemplate.find_by_etype("third attempt")
-      UserMailer.suscription_payment_failed(customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     elsif @user.uid == params[:account] && attempt == 4
 
       @email_template = EmailTemplate.find_by_etype("cancellation")
-      UserMailer.suscription_payment_failed(customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+      UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
     end
   end
 
