@@ -67,7 +67,6 @@ class ApplicationController < ActionController::Base
 <p>We&rsquo;ve attempted to bill your credit card 4 times, but have been unsuccessful. The following is the last response we received when trying to bill your account:</p>
 <p>{{failureMessage}}</p>
 <p>Please update your payment information to keep your account active (it'll take less than a minute).</p>
-<p>&nbsp;</p>
 <p>In the meantime, we have disabled your account.</p>
 <p>Let us know if you need help on how to go about updating your billing information.</p>
 <p>Thanks,</p>
