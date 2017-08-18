@@ -6,7 +6,11 @@
 <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
 <%= stylesheet_link_tag "dashboard/bootstrap.css" %>
 <%= stylesheet_link_tag "dashboard/style.css" %>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <%= javascript_include_tag 'application' %>
+
 </head>
 <body class="fix-header">
     <!-- ============================================================== -->
@@ -137,6 +141,7 @@
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
+                    
                 </div>
                 <!-- row list-->
                  <table class="table table-condensed table-striped" >
@@ -167,18 +172,45 @@
 		</td>
 
 		<td>
-			<%= link_to 'edit',edit_user_email_template_path(id: email_template.id) %>
+			<%= link_to 'edit',edit_user_email_template_path(id: email_template.id),class: "btn btn-info" %> 
 
 		</td>
 		
 		<td>
-			<%= link_to 'delete' , [email_template.user, email_template], method: :delete%>
+			<%= link_to 'delete' , [email_template.user, email_template], method: :delete, class: "btn btn-danger"%>
 		</td>
+
+        <td>
+            <% if email_template.active == false%>
+                <% @x = ""%>
+            <%else%>
+                <% @x = "checked"%>
+            <%end%>
+                
+            <input <%=@x%> data-toggle="toggle" data-on="Active" data-off="Draft"  data-onstyle="success" id="<%=email_template.id%>"  type="checkbox" data-offstyle="warning">
+  <!--script allows to change whether the email should be automatically sent or not-->           
+     <script>
+
+         $(function() {
+
+         $('#<%=email_template.id%>').change(function() {
+                var status = $(this).prop('checked')
+                document.cookie = "status="+status;
+                document.location = "/users/<%=@user.id%>/email_templates/status?emailId=<%=email_template.id%>"
+         $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+         })
+
+         })
+    </script>
+
+        </td>
 	</tr> 
 	<%end%>
 
 
 </table>
+
+     
                 <!-- /.row -->
                 <!-- ============================================================== -->
                 <!-- Right sidebar -->

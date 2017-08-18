@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   
   resources :users do
+    get 'email_templates/status'
   	resources :email_templates
   end
   get  'riskycustomers/customer'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   post 'stripe/failed_charge'
   post 'stripe/invoice_payment_failed'
   post 'stripe/customer_source_updated'
+
 
 
 
