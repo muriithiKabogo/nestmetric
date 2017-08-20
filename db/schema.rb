@@ -58,19 +58,6 @@ ActiveRecord::Schema.define(version: 20170820204535) do
     t.index ["user_id"], name: "index_riskycustomers_on_user_id"
   end
 
-  create_table "sent_emails", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "riskycustomer_id"
-    t.string "etype"
-    t.string "content"
-    t.string "to"
-    t.string "from"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["riskycustomer_id"], name: "index_sent_emails_on_riskycustomer_id"
-    t.index ["user_id"], name: "index_sent_emails_on_user_id"
-  end
-
   create_table "sents", force: :cascade do |t|
     t.bigint "user_id"
     t.string "etype"
@@ -108,6 +95,4 @@ ActiveRecord::Schema.define(version: 20170820204535) do
   add_foreign_key "email_templates", "users"
   add_foreign_key "failed_charges", "users"
   add_foreign_key "riskycustomers", "users"
-  add_foreign_key "sent_emails", "riskycustomers"
-  add_foreign_key "sent_emails", "users"
 end
