@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817125230) do
+ActiveRecord::Schema.define(version: 20170820204535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,30 @@ ActiveRecord::Schema.define(version: 20170817125230) do
     t.index ["user_id"], name: "index_riskycustomers_on_user_id"
   end
 
+  create_table "sent_emails", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "riskycustomer_id"
+    t.string "etype"
+    t.string "content"
+    t.string "to"
+    t.string "from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["riskycustomer_id"], name: "index_sent_emails_on_riskycustomer_id"
+    t.index ["user_id"], name: "index_sent_emails_on_user_id"
+  end
+
+  create_table "sents", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "etype"
+    t.string "content"
+    t.string "to"
+    t.string "from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sents_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,4 +108,6 @@ ActiveRecord::Schema.define(version: 20170817125230) do
   add_foreign_key "email_templates", "users"
   add_foreign_key "failed_charges", "users"
   add_foreign_key "riskycustomers", "users"
+  add_foreign_key "sent_emails", "riskycustomers"
+  add_foreign_key "sent_emails", "users"
 end

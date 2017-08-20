@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  etype: MyString
+  content: MyString
+  to: MyString
+  from: MyString
+
+two:
+  user: 
+  etype: MyString
+  content: MyString
+  to: MyString
+  from: MyString

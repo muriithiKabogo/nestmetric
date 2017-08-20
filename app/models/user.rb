@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :riskycustomers
   has_many :failed_charges
   has_many :cancellations
+  
 
   mount_uploader :picture, PictureUploader
   validate :picture_size

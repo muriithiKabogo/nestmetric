@@ -76,19 +76,20 @@ class StripeController < ApplicationController
     @customerID = params[:data][:object][:sources][:data][0][:customer]
     puts @customerID
 
-    @riskycustomer = @user.riskycustomers.find_by_customerId("cus_B89RZhIIzUYsI5")
-    puts @riskycustomer.expiryYear
-    expiryMonth = params[:data][:object][:sources][:data][0][:exp_month]
-    puts expiryMonth
-    expiryYear = params[:data][:object][:sources][:data][0][:exp_year]
-    puts expiryYear
+    if @user.riskycustomers.where(customerId: @customerID).exists?
+        @riskycustomer = @user.riskycustomers.find_by_customerId("cus_B89RZhIIzUYsI5")
+        puts @riskycustomer.expiryYear
+        expiryMonth = params[:data][:object][:sources][:data][0][:exp_month]
+        puts expiryMonth
+        expiryYear = params[:data][:object][:sources][:data][0][:exp_year]
+        puts expiryYear
 
-    if expiryYear > @riskycustomer.expiryYear && @riskycustomer.emailsent == true
-      @riskycustomer.recovered = true
-      @riskycustomer.save
-      puts "function works"
+        if expiryYear > @riskycustomer.expiryYear && @riskycustomer.emailsent == true
+          @riskycustomer.recovered = true
+          @riskycustomer.save
+          puts "function works"
+        end
     end
-
     # if @user.riskycustomers != 0
     #     @user.riskycustomers.each do |riskycustomer|
     #        customerDetails = Stripe::Customer.retrieve(riskycustomer.customerId)
