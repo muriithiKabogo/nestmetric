@@ -43,6 +43,7 @@ Rails.application.config.assets.precompile += %w( waves.js )
 Rails.application.config.assets.precompile += %w( custom.min.js )
 Rails.application.config.assets.precompile += %w( jquery.slimscroll.js )
 Rails.application.config.assets.precompile += %w( dashboard1.js )
+
 Rails.application.config.assets.precompile += %w( jquery.sparkline.min.js )
 Rails.application.config.assets.precompile += %w( jquery.toast.js )
 Rails.application.config.assets.precompile += %w( jquery.toast.js )
