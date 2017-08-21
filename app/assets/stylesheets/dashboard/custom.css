@@ -125,3 +125,34 @@
     font-weight: 500;
     font-size: 13px;
   }
+
+  span.text-content {
+  background: rgba(0,0,0,0.1);
+  color: #2f323e;
+  cursor: pointer;
+  padding-right: 5px;
+  display: table;
+  height: 7px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  margin-left: 120px;
+  margin-top: 80px;
+  border-radius: 12px;
+  font-size : 0.8em;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.widget:hover span.text-content {
+  opacity: 1;
+}
