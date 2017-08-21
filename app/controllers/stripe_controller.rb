@@ -5,7 +5,7 @@ class StripeController < ApplicationController
   def webhook
   	@user = User.find_by_uid(params[:account])
   	customer_email = params[:data]
-  	customer_email = "dmuriithi.k@gmail.com"#customer_email[:object][:receipt_email]
+  	customer_email = customer_email[:object][:receipt_email]
   	puts customer_email
   	@email_template = EmailTemplate.find_by_etype("first attempt")
   	puts @email_template.body
@@ -27,9 +27,13 @@ class StripeController < ApplicationController
     customerPlan = customer_data[:object][:lines][:data][0][:plan][:id]
     chargeID = customer_data[:object][:charge]
 
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-    customer_data = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc") #"cus_AgI34MFkZad9mc"
-    chargeData = Stripe::Charge.retrieve("ch_1ArPKKEv2HD4YYepax5YYSBS") #"ch_1ArPKKEv2HD4YYepax5YYSBS"
+    if Rails.env.production?
+         Stripe.api_key = ENV['@user.access_code'] 
+    else
+         Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    end
+    customer_data = Stripe::Customer.retrieve(customerId) #"cus_AgI34MFkZad9mc"
+    chargeData = Stripe::Charge.retrieve(chargeID) #"ch_1ArPKKEv2HD4YYepax5YYSBS"
     customer_email = customer_data[:email]
     customer_last4 = customer_data[:sources][:data][0][:last4]
     reason  = chargeData[:failure_message]

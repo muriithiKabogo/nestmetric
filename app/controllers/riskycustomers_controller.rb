@@ -5,10 +5,10 @@ class RiskycustomersController < ApplicationController
   def customer
 
     if Rails.env.production?
-         Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO'] #@user.access_code
-      else
+         Stripe.api_key = ENV['@user.access_code'] 
+    else
          Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-      end
+    end
 
       token = cookies[:myToken]
       customer = Stripe::Customer.retrieve("cus_B89RZhIIzUYsI5")
