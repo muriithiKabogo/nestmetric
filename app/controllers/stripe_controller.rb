@@ -34,7 +34,6 @@ class StripeController < ApplicationController
     customer_last4 = customer_data[:sources][:data][0][:last4]
     reason  = chargeData[:failure_message]
 
-
     puts customer_email
     puts customerPlan
     puts customer_last4
@@ -43,8 +42,9 @@ class StripeController < ApplicationController
     puts reason
     if @user.uid == params[:account] && attempt == 1
       @email_template = EmailTemplate.find_by_etype("first attempt")
-      if @email_template.active == true
+      if @email_template.active == false
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+        @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
       end
       
     elsif @user.uid == params[:account] && attempt == 2
@@ -53,12 +53,14 @@ class StripeController < ApplicationController
 
       if @email_template.active == true
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+        @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
       end
     elsif @user.uid == params[:account] && attempt == 3
 
       @email_template = EmailTemplate.find_by_etype("third attempt")
       if @email_template.active == true
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+        @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
       end
 
     elsif @user.uid == params[:account] && attempt == 4
@@ -66,6 +68,7 @@ class StripeController < ApplicationController
       @email_template = EmailTemplate.find_by_etype("cancellation")
       if @email_template.active == true
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
+        @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
       end
 
     end
