@@ -40,7 +40,6 @@
             <div class="white-box">
                 <h3 class="box-title m-b-0">Change your password</h3> <small>Enter your details below</small>
                 
- 
             <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
               <%= devise_error_messages! %>
               <%= f.hidden_field :reset_password_token %>
@@ -57,7 +56,9 @@
                       <%=f.password_field :password, autofocus: true, autocomplete: "off" , class: "form-control",placeholder: 'New password' %>
                             </div>
                     </div>
-                    <br><br>
+
+                    <br><br><br>
+
                     <div class="form-group ">
                         <div class="col-xs-12">
                      
