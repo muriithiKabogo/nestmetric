@@ -3,8 +3,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'https://staging-nestmetric.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-  :user_name            => ENV['SENDGRID_USERNAME_staging'],
-  :password             => ENV['SENDGRID_PASSWORD_staging'],
+  :user_name            => ENV['SENDGRID_USERNAME'],
+  :password             => ENV['SENDGRID_PASSWORD'],
   :address              => "smtp.sendgrid.net",
   :port                 => 587,
   :enable_starttls_auto => true,
