@@ -3,11 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,:omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :email_templates
-  has_many :riskycustomers
-  has_many :failed_charges
-  has_many :cancellations
-  has_many :sents
+  has_many :email_templates ,dependent: :destroy 
+  has_many :riskycustomers, dependent: :destroy 
+  has_many :failed_charges, dependent: :destroy 
+  has_many :cancellations, dependent: :destroy 
+  has_many :sents, dependent: :destroy 
 
   mount_uploader :picture, PictureUploader
   validate :picture_size
