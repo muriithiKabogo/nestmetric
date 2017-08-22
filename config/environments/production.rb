@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { :host => 'https://staging-nestmetric.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'https://www.nestmetric.com' }
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
   :user_name            => ENV['SENDGRID_USERNAME'],
