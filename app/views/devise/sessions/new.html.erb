@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-<title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
+<title></title>
 <!-- Bootstrap Core CSS -->
   <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
   <%= stylesheet_link_tag "dashboard/style.css" %>
@@ -67,7 +67,10 @@
                           <%= f.check_box :remember_me, id: 'checkbox-signup' %>
                           <label for="checkbox-signup"> Remember me </label>
                         </div>
-                        <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> </div>
+                        
+                        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                         <%= link_to "Forgot your password?", new_password_path(resource_name),class: "text-dark pull-right" %><br />
+                        <% end -%> </div>
                     </div>
 
                     <div class="form-group text-center m-t-20">
