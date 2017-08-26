@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   	@email_template = EmailTemplate.new
   	@email_templates = @user.email_templates.all
-    @allfailed  = failed_charges_thirty_days_ago.length
-    @cancellation = all_cancellation_for_last_30_days.length
+    @allfailed  = @user.failed_charges.where("failed_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+    @cancellation = @user.cancellations.where("canceled_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
 
     @riskycustomers = @user.riskycustomers.order(:created_at).reverse
     @riskycustomers = @riskycustomers   

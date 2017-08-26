@@ -113,59 +113,7 @@
                 <!-- ============================================================== -->
                 <!-- Different data widgets -->
                 <!-- ============================================================== -->
-                <!-- .row -->
-                <div class="row">
-                    <!-- <div class="col-lg-3 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">recovered</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash"></div>
-                                </li>
-                                <li class="text-right"> <span class="counter text-success"></span></li>
-                            </ul>
-                        </div>
-                    </div> -->
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Revenue at risk</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash2"></div>
-                                </li>
-                         <li class="text-right"> <span class="counter text-purple"> <%=@riskyRevenue%></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <%=link_to failed_charges_index_path do%>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Failed charges</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash3"></div>
-                                </li>
-                                <li class="text-right"> <span class="counter text-info"><%=@allfailed%> </span></li>
-                            </ul>
-                        </div>
-                    </div>
-                     <%end%>
-                    <%=link_to cancellations_index_path do%>
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Cancellations</h3>
-                            <ul class="list-inline two-part">
-                                <li>
-                                    <div id="sparklinedash4"></div>
-                                </li>
-                                <li class="text-right"> <span class="text-danger"><%=@cancellation%> </span></li>
-                            </ul>
-                        </div>
-                    </div>
-                   <%end%>
-                </div>
-                <!--/.row -->
-                <!--row -->
+               
                 <!-- /.row -->
                 
                     <!-- row list-->
@@ -177,31 +125,27 @@
                                 <div class="table-responsive">
                                     <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10" >
                                         <thead>
-                                            <tr>
-                                            
-                                                <th>Email</th>
-                                                <th>Expiry Month</th>
-                                                <th>Expiry Year</th>
-                                                <th>Risk Level</th>
-                                                <th>Plan</th>
-                                                <th>Revenue at risk($)</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        <% @riskycustomers.each do |riskycustomer|%>
-                                            <tr>
-                                                <td><%= riskycustomer.email%></td>
-                                                <td><%= riskycustomer.expiryMonth%></td>
-                                                <td><%= riskycustomer.expiryYear%></td>
-                                                <td><%= riskycustomer.rlevel%></td>  
-                                                <td><%= riskycustomer.plan%></td>
-                                                <td><%= riskycustomer.amount/100%></td>
-                                                    
-                                            </tr>
-                                        <%end%>    
-                                        </tbody>
+												<tr>
+													<td>Email</td>
+													<td>Failed at</td>
+													<td>PlanName</td>
+													<td>Amount</td>
+													<td>Reason</td>
+													<td>Attempt</td>
+												</tr>
+												</thead>
+												<tbody>
+											<%@allfailed.each do|failed|%>
+												<tr>
+													<td><%=failed.email%></td>
+													<td><%=failed.failed_at.to_date%></td>
+													<td><%=failed.plan%></td>
+													<td><%=failed.amount%></td>
+													<td><%=failed.reason%></td>
+													<td><%=failed.attempt%></td>
+												</tr>
+											 <%end%>
+											 </tbody>
                                         <tfoot>
                                             <tr>
                                                 <td colspan="2">
@@ -266,3 +210,7 @@
 </body>
 
 </html>
+
+<table class="table table-condensed  table-hover">
+	
+</table>

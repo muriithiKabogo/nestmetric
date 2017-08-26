@@ -122,7 +122,7 @@ class ApplicationController < ActionController::Base
         v.push(charge)
       end
     end
-    v.length
+    v
   end
 
   def failed_charges_thirty_days_ago
@@ -148,11 +148,11 @@ class ApplicationController < ActionController::Base
   def failed_charges_ninety_days_ago
     v = []
     get_charges_not_paid("data").each do |charge|
-      if charge.status == "failed" && Time.at(charge["created"])<= ninety_days_ago
+      if charge.status == "failed" && Time.at(charge["created"])>= ninety_days_ago
         v.push(charge)
       end
     end
-    v.length
+    v
   end
 
   def failed_charges_one_eighty_days_ago
@@ -231,11 +231,11 @@ class ApplicationController < ActionController::Base
       v=[]
       get_all_cancellations.each do |cancellation|
         
-         if Time.at(cancellation["canceled_at"]) <= ninety_days_ago
+         if Time.at(cancellation["canceled_at"]) >= ninety_days_ago
           v.push(cancellation)
          end  
       end
-      v.length
+      v
   end
 
   def cancellation_one_eighty_days_ago
