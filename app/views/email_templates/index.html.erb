@@ -9,6 +9,8 @@
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css">
+
 <%= javascript_include_tag 'application' %>
 
 </head>
@@ -135,7 +137,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">
                         	<!-- <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="/users/"></button> -->
-					 <%= link_to 'add new template', new_user_email_template_path, class: "btn btn-info btn-rounded"%>                                              
+					                                               
                          </h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         
@@ -146,12 +148,12 @@
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
-                    
+                   
                 </div>
                 <!-- row list-->
                  <table class="table table-condensed table-striped" >
 	<tr>
-		<th style="padding-left: 50px;">
+		<th style="padding-left: 50px;" data-intro="Shows WHEN the email is sent">
 			Email type
 		</th>
 		<th style="padding-left: 50px;">
@@ -284,7 +286,10 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+    <script>
+        introJs().start();
+    </script>
 </body>
 
 
