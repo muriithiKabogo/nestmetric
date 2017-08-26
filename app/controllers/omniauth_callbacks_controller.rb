@@ -10,7 +10,7 @@ class OmniauthCallbacksController < ApplicationController
     })
 
       # anything euser_email_templates_path(current_user.id)lse you need to do in response..
-      redirect_to user_email_templates_path(current_user.id)
+      redirect_to users_path
       #set_flash_message(:notice, :success, :kind => "Stripe") if is_navigational_format?
     else
       session["devise.stripe_connect_data"] = request.env["omniauth.auth"]
