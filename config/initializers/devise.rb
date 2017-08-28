@@ -4,14 +4,14 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # Devise will use the `secret_key_base` as its `secret_key`
+  # Devise will use. the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'd9498cad8dd8f1781bacee3df2ccd02043253f0759701b1485990dbf4ef042149c665e3c422f3a7ceddeb268668bc8a81f01acd28ed7fc16005c5910dd5593b2'
   if Rails.env.production?
 
   config.omniauth :stripe_connect,
-      ENV['STRIPE_CONNECT_CLIENT_ID_PRO'],
-      ENV['STRIPE_SECRET_KEY_PRO'],
+      ENV['STRIPE_CONNECT_CLIENT_ID_PRO_R'],
+      ENV['STRIPE_SECRET_KEY_PRO_R'],
       :scope => 'read_write',
       :stripe_landing => 'login'
   else

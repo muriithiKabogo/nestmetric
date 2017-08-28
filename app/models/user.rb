@@ -21,7 +21,7 @@ class User < ApplicationRecord
   def stripe_subscriptions
     
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
@@ -163,7 +163,7 @@ class User < ApplicationRecord
 
   def stripe_charges_not_paid
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
@@ -173,7 +173,7 @@ class User < ApplicationRecord
 
   def stripe_cancellation
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
