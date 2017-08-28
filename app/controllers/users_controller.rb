@@ -12,13 +12,15 @@ class UsersController < ApplicationController
     if @user.cancellations.exists? == false 
       @cancellation = get_all_cancellations.length
     else
-      @cancellation = @user.cancellations.where("canceled_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+      # @cancellation = @user.cancellations.where("canceled_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+      @cancellation = @user.cancellations.count
     end
 
     if @user.failed_charges.exists? == false
       @allfailed = failed_charges.length
     else
-      @allfailed  = @user.failed_charges.where("failed_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+      # @allfailed  = @user.failed_charges.where("failed_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+      @allfailed  = @user.failed_charges.count
     end
 
     @riskycustomers = @user.riskycustomers.order(:created_at).reverse
