@@ -9,7 +9,7 @@ class CancellationsController < ApplicationController
 		  	@canceled_at = Time.at(cancellation["canceled_at"])
 		  	@plan = cancellation["items"]["data"][0]["plan"]["name"]
 		  	@amount = cancellation["items"]["data"][0]["plan"]["amount"]
-		  	Stripe.api_key = ENV['@user.access_code'] 
+		  	Stripe.api_key = @user.access_code
 		  	@customer_data = Stripe::Customer.retrieve(cancellation["customer"])
 		  	@email = @customer_data["email"]
 		  	@user.cancellations.create(email: @email,plan: @plan,amount: @amount,canceled_at: @canceled_at)
