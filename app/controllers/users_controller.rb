@@ -10,13 +10,13 @@ class UsersController < ApplicationController
   	@email_templates = @user.email_templates.all
 
     if @user.cancellations.exists? == false 
-      @cancellation = all_cancellation_for_last_30_days.length
+      @cancellation = get_all_cancellations.length
     else
       @cancellation = @user.cancellations.where("canceled_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
     end
 
     if @user.failed_charges.exists? == false
-      @allfailed = failed_charges_thirty_days_ago.length
+      @allfailed = failed_charges.length
     else
       @allfailed  = @user.failed_charges.where("failed_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
     end
