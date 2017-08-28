@@ -12,6 +12,7 @@ class FailedChargesController < ApplicationController
 			failed_at = Time.at(failed["created"])
 			customer_id = failed["customer"]
 			if failed["invoice"] != nil
+				Stripe.api_key = @user.access_code
 				invoice_object = Stripe::Invoice.retrieve(failed["invoice"])
 				plan = invoice_object["lines"]["data"][0]["plan"]["name"]
 				attempt = invoice_object["attempt_count"]
