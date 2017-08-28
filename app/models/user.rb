@@ -176,7 +176,7 @@ class User < ApplicationRecord
       Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
     end
     begin
       Stripe::Subscription.list({limit: 100,status: 'canceled'},{stripe_account: uid })
