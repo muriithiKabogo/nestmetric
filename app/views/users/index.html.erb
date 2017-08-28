@@ -3,7 +3,8 @@
     <%= stylesheet_link_tag "dashboard/bootstrap.css" %>
     <%= stylesheet_link_tag "dashboard/bootstrap.min.css" %>
     <%= stylesheet_link_tag "dashboard/style.css" %>
-    
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css">
 </head>
 
 <body class="fix-header">
@@ -126,8 +127,8 @@
                             </ul>
                         </div>
                     </div> -->
-                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
+                    <div class="col-lg-4 col-sm-6 col-xs-12" >
+                        <div class="white-box analytics-info" data-intro="This is the amountof money the business is likely to loose if credit cards are not renewed by the end of the month">
                             <h3 class="box-title">Revenue at risk</h3>
                             <ul class="list-inline two-part">
                                 <li>
@@ -139,8 +140,8 @@
                     </div>
                     <%=link_to failed_charges_index_path do%>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Failed charges</h3>
+                        <div class="white-box analytics-info" data-intro="Number of failed charges in the current month e.g. the number represents number of failed charges for <%= Date.today.strftime("%B")%>" >
+                            <h3 class="box-title">Failed charges </h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash3"></div>
@@ -152,7 +153,7 @@
                      <%end%>
                     <%=link_to cancellations_index_path do%>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
-                        <div class="white-box analytics-info">
+                        <div class="white-box analytics-info" data-intro="Number of cancellations in the current month e.g. the number represents number of cancellations for <%= Date.today.strftime("%B")%>">
                             <h3 class="box-title">Cancellations</h3>
                             <ul class="list-inline two-part">
                                 <li>
@@ -193,7 +194,7 @@
                                         <% @riskycustomers.each do |riskycustomer|%>
                                             <tr>
                                                 <td><%= riskycustomer.email%></td>
-                                                <td><%= riskycustomer.expiryMonth%></td>
+                                                <td><%=Date::MONTHNAMES[riskycustomer.expiryMonth]%></td>
                                                 <td><%= riskycustomer.expiryYear%></td>
                                                 <td><%= riskycustomer.rlevel%></td>  
                                                 <td><%= riskycustomer.plan%></td>
@@ -262,7 +263,10 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+    <script>
+        introJs().start();
+    </script>
 </body>
 
 </html>

@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
       end
   		user_path(current_user.id)
   	else
-	   user_email_templates_path(current_user.id)
+	   users_path
 	end
 	
   end

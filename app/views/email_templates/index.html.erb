@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/themes/introjs-nazanin.css">
 
 <%= javascript_include_tag 'application' %>
 
@@ -153,15 +154,24 @@
                 <!-- row list-->
                  <table class="table table-condensed table-striped" >
 	<tr>
-		<th style="padding-left: 50px;" data-intro="Shows WHEN the email is sent">
-			Email type
+		<th style="padding-left: 50px;" >
+			<span data-intro="Describes the TIME when the email is sent">Email type</span>
 		</th>
 		<th style="padding-left: 50px;">
-			subject
+			<span data-intro="Email subject that appears on the subject section of an email">subject</span>
 		</th>
 		<th style="padding-left: 50px;">
-			Body
+			<span data-intro="The part of an email which contains the message">Body</span>
 		</th>
+        <th style="padding-left: 50px;">
+            
+        </th>
+        <th style="padding-left: 50px;">
+            
+        </th>
+        <th style="padding-left: 50px;">
+            <span data-intro="ACTIVE  means the email can be sent out automatically. DRAFT means that the email is NOT active and cannot be triggered automatically">Status</span>
+        </th>
 	</tr>
 	<% @email_templates.each do |email_template|%>
 	<tr >
@@ -180,7 +190,6 @@
 
 		<td>
 			<%= link_to 'edit',edit_user_email_template_path(id: email_template.id),class: "btn btn-info" %> 
-
 		</td>
 		
 		<td>
@@ -194,7 +203,7 @@
                 <% @x = "checked"%>
             <%end%>
                 
-            <input <%=@x%> data-toggle="toggle" data-on="Active" data-off="Draft"  data-onstyle="success" id="<%=email_template.id%>"  type="checkbox" data-offstyle="warning">
+            <input <%=@x%> data-toggle="toggle" data-on="Active" data-off="Draft"  data-onstyle="success" id="<%=email_template.id%>"  type="checkbox" data-offstyle="warning" >
   <!--script allows to change whether the email should be automatically sent or not-->           
      <script>
 
