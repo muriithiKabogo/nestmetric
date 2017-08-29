@@ -21,7 +21,7 @@ class User < ApplicationRecord
   def stripe_subscriptions
     
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
@@ -32,6 +32,7 @@ class User < ApplicationRecord
       print e
     end 
   end
+
 
   def getCustomersIds(user)
   	customers = user.stripe_subscriptions["data"]
@@ -44,7 +45,13 @@ class User < ApplicationRecord
 
   def notDelinquentButRisky(user)
     nonDelinquentButRiskyCustomers = []
-    getCustomersIds(user).each do |customerId|  
+    getCustomersIds(user).each do |customerId| 
+    if Rails.env.production?
+      Stripe.api_key = access_code
+      # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    else
+      Stripe.api_key = access_code
+    end 
       customerDetails = Stripe::Customer.retrieve(customerId)
       delinquent =  customerDetails["delinquent"]
 
@@ -62,6 +69,12 @@ class User < ApplicationRecord
     riskiest = []
 
     getCustomersIds(user).each do |customerId|
+        if Rails.env.production?
+          Stripe.api_key = access_code
+          # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        else
+          Stripe.api_key = access_code
+        end 
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
@@ -85,6 +98,12 @@ class User < ApplicationRecord
    def retrieveRiskyCustomer(user)
     risky = []
     notDelinquentButRisky(user).each do |customerId|
+        if Rails.env.production?
+          Stripe.api_key = access_code
+          # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        else
+          Stripe.api_key = access_code
+        end 
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
@@ -101,6 +120,12 @@ class User < ApplicationRecord
   def retrieveRiskierCustomer(user)
     riskier = []
     notDelinquentButRisky(user).each do |customerId|
+        if Rails.env.production?
+          Stripe.api_key = access_code
+          # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        else
+          Stripe.api_key = access_code
+        end 
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
@@ -117,6 +142,12 @@ class User < ApplicationRecord
   def retrieveRiskiestCustomer(user)
     riskiest = []
     notDelinquentButRisky(user).each do |customerId|
+        if Rails.env.production?
+          Stripe.api_key = access_code
+          # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        else
+          Stripe.api_key = access_code
+        end 
         customerDetails = Stripe::Customer.retrieve(customerId)
         expiryMonth = customerDetails["sources"]["data"][0]["exp_month"]
         expiryYear = customerDetails["sources"]["data"][0]["exp_year"]
@@ -163,7 +194,7 @@ class User < ApplicationRecord
 
   def stripe_charges_not_paid
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
       Stripe.api_key = ENV['STRIPE_SECRET_KEY']
@@ -173,10 +204,10 @@ class User < ApplicationRecord
 
   def stripe_cancellation
     if Rails.env.production?
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO']
       # Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     else
-      Stripe.api_key = ENV['STRIPE_SECRET_KEY_PRO_R']
+      Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     end
     begin
       Stripe::Subscription.list({limit: 100,status: 'canceled'},{stripe_account: uid })
