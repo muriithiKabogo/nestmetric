@@ -3,8 +3,8 @@ class FailedChargesController < ApplicationController
   def index
   	@user = current_user
   	if @user.failed_charges.exists? == false
-  		# allfailed  = failed_charges_ninety_days_ago
-  			allfailed = failed_charges
+  		allfailed  = failed_charges_ninety_days_ago
+  			# allfailed = failed_charges
 		allfailed.each do |failed|
 			email = failed["receipt_email"]
 			amount = failed["amount"]

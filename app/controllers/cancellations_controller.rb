@@ -3,8 +3,8 @@ class CancellationsController < ApplicationController
   def index
   	@user = current_user
 	if @user.cancellations.exists? == false
-	  	# cancellations = cancellation_ninety_days_ago
-	  	cancellations = get_all_cancellations
+	  	cancellations = cancellation_ninety_days_ago
+	  	# cancellations = get_all_cancellations
 	  	cancellations.each do |cancellation|
 		  	@canceled_at = Time.at(cancellation["canceled_at"])
 		  	@plan = cancellation["items"]["data"][0]["plan"]["name"]

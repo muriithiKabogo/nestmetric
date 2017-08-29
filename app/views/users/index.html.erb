@@ -264,9 +264,58 @@
     <!-- ============================================================== -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+    <!-- <script>
+    function GetURLParameter(sParam){
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) {
+            var sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] == sParam){
+                return sParameterName[1];
+            }
+        }
+        return false;
+    }
+        var onboarding = GetURLParameter("onboarding")=== "true" ? true : false;
+        if(onboarding === true){
+            introJs().start()
+            .onexit(function() {
+              //alert("exit of introduction");
+              console.log($)
+            });
+        }
+    </script> -->
+
     <script>
-        introJs().start();
+        if (<%=@user.onboarding%> === true) {
+        
+         } else {
+        showOnBoarding();
+        }
+
+        function showOnBoarding() {
+        
+         introJs().start()
+
+        $.ajax({
+            url:'<%= user_url current_user %>' + '.json',
+            method: 'PUT',
+            data: {
+                user: {
+                    onboarding: true
+                }
+            },
+            success: function (data) {
+                console.log("user saved successfully");
+                console.log(data);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        })
+    }
     </script>
+
 </body>
 
 </html>

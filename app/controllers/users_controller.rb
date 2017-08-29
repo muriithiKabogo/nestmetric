@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
+
+
   def index
     @user = current_user
     # GetRiskyCustomersJob.perform_later(@user)   
@@ -10,17 +12,17 @@ class UsersController < ApplicationController
   	@email_templates = @user.email_templates.all
 
     if @user.cancellations.exists? == false 
-      @cancellation = get_all_cancellations.length
+      @cancellation = all_cancellation_for_last_30_days.length
     else
-      # @cancellation = @user.cancellations.where("canceled_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
-      @cancellation = @user.cancellations.count
+      @cancellation = @user.cancellations.where("canceled_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+      # @cancellation = @user.cancellations.count
     end
 
     if @user.failed_charges.exists? == false
-      @allfailed = failed_charges.length
+      @allfailed = failed_charges_thirty_days_ago.length
     else
-      # @allfailed  = @user.failed_charges.where("failed_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
-      @allfailed  = @user.failed_charges.count
+      @allfailed  = @user.failed_charges.where("failed_at >= :startdate",{startdate: Time.now.beginning_of_month}).count
+      # @allfailed  = @user.failed_charges.count
     end
 
     @riskycustomers = @user.riskycustomers.order(:created_at).reverse
@@ -39,12 +41,16 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-        flash[:success]="Successfully updated profile"
-        redirect_to edit_user_path
+    
+     respond_to do |format|
+      if @user.update_attributes(user_params)
+        format.html { redirect_to users_path, notice: 'Student was successfully created.' }
+        format.json { redirect_to users_path, status: :created, location: users_path}
       else
-        render 'edit'
-     end
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
 
 
   end
@@ -56,7 +62,7 @@ private
 
 
   def user_params
-    params.require(:user).permit(:email, :picture)
+    params.require(:user).permit(:email, :picture,:onboarding)
   end
 
   def riskyTotal
