@@ -144,8 +144,13 @@
                         
                         
                         <ol class="breadcrumb">
-                            <li><a href="#">Dashboard</a></li>
-                            <li class="active">Templates</li>
+
+                            <li>
+                                <button onclick="showOnBoarding()" class= "btn btn-info">
+                                        Take a tour
+                                </button>
+                            </li>
+                            
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -296,8 +301,36 @@
         <!-- /#page-wrapper -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
-    <script>
-        // introJs().start();
+   
+
+     <script>
+        if (<%=@user.onboarding%> === true) {
+        
+         } else {
+        showOnBoarding();
+        }
+
+        function showOnBoarding() {
+        
+         introJs().start()
+
+        $.ajax({
+            url:'<%= user_url current_user %>' + '.json',
+            method: 'PUT',
+            data: {
+                user: {
+                    onboarding: true
+                }
+            },
+            success: function (data) {
+                console.log("user saved successfully");
+                console.log(data);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        })
+    }
     </script>
 </body>
 

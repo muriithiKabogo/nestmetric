@@ -35,9 +35,19 @@
                    
                 
                <ul class="nav navbar-top-links navbar-right pull-right">
+                    
                     <li class="dropdown"><b>
                 <%= link_to 'logout', destroy_user_session_path,:method => :delete, class: 'dropdown-toggle profile-pic ',style:'padding-right: 40px;' %></b>
                     </li>
+
+                    <!-- /.dropdown -->
+                </ul>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    
+                    <li class="dropdown"><b>
+                <%= link_to 'Take a Tour', destroy_user_session_path,:method => :delete, class: 'dropdown-toggle profile-pic ',style:'padding-right: 40px;' %></b>
+                    </li>
+
                     <!-- /.dropdown -->
                 </ul>
             </div> 
@@ -105,6 +115,7 @@
                         
                         
                         <ol class="breadcrumb">
+                            
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
