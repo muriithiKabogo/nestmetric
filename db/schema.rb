@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828183353) do
+ActiveRecord::Schema.define(version: 20170830095801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170828183353) do
     t.string "customer_id"
     t.string "reason"
     t.integer "attempt"
+    t.boolean "sent", default: false
     t.index ["user_id"], name: "index_failed_charges_on_user_id"
   end
 

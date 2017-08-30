@@ -53,7 +53,7 @@ class StripeController < ApplicationController
       if @email_template.active == false
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
         @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
-        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt)
+        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt, sent: true)
       end
       
     elsif @user.uid == params[:account] && attempt == 2
@@ -63,7 +63,7 @@ class StripeController < ApplicationController
       if @email_template.active == true
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
         @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
-        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt)
+        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt,sent: true)
       end
     elsif @user.uid == params[:account] && attempt == 3
 
@@ -71,7 +71,7 @@ class StripeController < ApplicationController
       if @email_template.active == true
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
         @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
-        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt)
+        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt,sent: true)
       end
 
     elsif @user.uid == params[:account] && attempt == 4
@@ -80,7 +80,7 @@ class StripeController < ApplicationController
       if @email_template.active == true
         UserMailer.suscription_payment_failed(reason,customer_last4,customerPlan,@user.id,@user.uid,@user.email,customer_email,@email_template.body,@email_template.subject).deliver_now
         @user.sents.create(etype: @email_template.etype,content: @email_template.body, to: customer_email,from: @user.email)
-        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt)
+        @user.failed_charges.create(email: customer_email,plan:customerPlan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt, sent: true)
       end
 
     end
@@ -117,6 +117,20 @@ class StripeController < ApplicationController
     #        end
     #     end
     # end
+    
+  end
+
+  def subscription_canceled
+    @user = User.find_by_uid(params[:account])
+    subscription = params[:data]
+    canceled_at = subscription[:object][:canceled_at]
+    plan = subscription[:object][:items][:data][0][:plan][:id]
+    amount = subscription[:object][:items][:data][0][:plan][:amount]
+    customer_id = subscription[:object][:customer]
+    Stripe.api_key = @user.access_code
+    customer_data = Stripe::Customer.retrieve(customer_id)
+    email = customer_data["email"]
+    @user.cancellations.create(email: email,plan: plan,amount: amount,canceled_at: canceled_at)
     
   end
 

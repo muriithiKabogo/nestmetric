@@ -22,9 +22,9 @@ class FailedChargesController < ApplicationController
 			end			
 		@user.failed_charges.create(email: email,plan: plan,amount:amount, failed_at: failed_at ,customer_id: customer_id ,reason: reason, attempt: attempt)
 		end
-	@allfailed  = @user.failed_charges
+	@allfailed  = @user.failed_charges.order(:created_at).reverse
 	else
-	@allfailed  = @user.failed_charges
+	@allfailed  = @user.failed_charges.order(:created_at).reverse
 	end
   end
 

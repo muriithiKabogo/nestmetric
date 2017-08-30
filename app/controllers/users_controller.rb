@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     
      respond_to do |format|
       if @user.update_attributes(user_params)
-        format.html { redirect_to users_path, notice: 'Student was successfully created.' }
+        format.html { redirect_to users_path, notice: 'User was successfully created.' }
         format.json { redirect_to users_path, status: :created, location: users_path}
       else
         format.html { render :new }

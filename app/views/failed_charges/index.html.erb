@@ -132,6 +132,7 @@
 													<td>Amount</td>
 													<td>Reason</td>
 													<td>Attempt</td>
+                                                    <td>Notification status</td>
 												</tr>
 												</thead>
 												<tbody>
@@ -143,6 +144,16 @@
 													<td><%=failed.amount%></td>
 													<td><%=failed.reason%></td>
 													<td><%=failed.attempt%></td>
+                                                    
+                                                    <%if failed.sent == false%>
+                                                        <%@status = "NOT SENT"%>
+                                                        <%@bg = "bg-danger"%>
+                                                    <%else%>
+                                                        <%@status = "SENT"%>
+                                                        <%@bg = "bg-success"%>
+                                                    <%end%>
+
+                                                    <td class=" <%=@bg%> text-center" style = "color: white;"><%=@status%></td>
 												</tr>
 											 <%end%>
 											 </tbody>
