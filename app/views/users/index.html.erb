@@ -63,8 +63,8 @@
                         
                     </li>
                   
-        <li>
-        <a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu">Your Templates</span> </a>
+        <li >
+        <a href="/users/<%=@user.id%>/email_templates" class="waves-effect"> <span class="hide-menu" >Your Templates</span> </a>
 <!-- 
                         <ul class="nav nav-second-level">
                             <li><a><span class="hide-menu"> <%=link_to 'Predunning',new_user_email_template_path(@user,@email_template), class: "waves-effect"%></span></a>
@@ -150,7 +150,13 @@
                     <%=link_to failed_charges_index_path do%>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info" data-intro="Number of failed charges in the current month e.g. the number represents number of failed charges for <%= Date.today.strftime("%B")%>" >
-                            <h3 class="box-title">Failed charges </h3>
+                            <div style="float: left;">
+                                <h3 class="box-title">Failed charges </h3>
+                            </div>
+                            <div style="float: left; padding-left: 5px;">
+                                (For <%=Date::MONTHNAMES[Time.now.month]%>)
+                            </div>
+
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash3"></div>
@@ -163,7 +169,15 @@
                     <%=link_to cancellations_index_path do%>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info" data-intro="Number of cancellations in the current month e.g. the number represents number of cancellations for <%= Date.today.strftime("%B")%>">
-                            <h3 class="box-title">Cancellations</h3>
+                            <div style="float: left;">
+                                <h3 class="box-title">Cancellations</h3>
+                            </div>
+
+                            <div style="float: left; padding-left: 5px;">
+
+                                 (For <%=Date::MONTHNAMES[Time.now.month]%>)
+                            </div>
+                           
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash4"></div>
