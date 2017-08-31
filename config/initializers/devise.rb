@@ -1,7 +1,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  # The secret key used by Devise. Devise uses this key to generate
+  # The secret key used by Devise.. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use. the `secret_key_base` as its `secret_key`
@@ -10,8 +10,8 @@ Devise.setup do |config|
   if Rails.env.production?
 
   config.omniauth :stripe_connect,
-      ENV['STRIPE_CONNECT_CLIENT_ID_PRO_R'],
-      ENV['STRIPE_SECRET_KEY_PRO_R'],
+      ENV['STRIPE_CONNECT_CLIENT_ID_DEV_R'],
+      ENV['STRIPE_SECRET_KEY_R'],
       :scope => 'read_write',
       :stripe_landing => 'login'
   else
