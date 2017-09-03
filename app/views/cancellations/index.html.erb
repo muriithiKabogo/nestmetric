@@ -147,7 +147,7 @@
 											<%@cancellations.each do|canceled|%>
 											<tr>
 												<td><%=canceled.email%></td>
-												<td><%=canceled.canceled_at%></td>
+												<td><%=Date::MONTHNAMES[canceled.canceled_at.to_date.month]%></td>
 												<td><%=canceled.plan%></td>
 												<td><%=canceled.amount/100%></td>
 											</tr>

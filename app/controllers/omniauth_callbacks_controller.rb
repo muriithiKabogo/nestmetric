@@ -19,7 +19,7 @@ class OmniauthCallbacksController < ApplicationController
 
     if @user.riskycustomers.count == 0
       #@user.saveRiskyCustomers(@user)
-      GetRiskyCustomersJob.perform_later(@user)
+      GetRiskyCustomersWorker.perform_in(2.minutes,@user.id)
     end
     
   end
