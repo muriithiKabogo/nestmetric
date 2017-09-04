@@ -14,6 +14,7 @@ gem 'fog',                     '1.40.0'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem "sidekiq-cron", "~> 0.6.3"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record
