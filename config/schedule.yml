@@ -1,5 +1,5 @@
 send_email:
-  cron: "0 * * * *"
+  cron: "0 13 4 * *"
   class: "SendEmailWorker"
   queue: default
   active_job: true
