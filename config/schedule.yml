@@ -3,3 +3,15 @@ send_email:
   class: "SendEmailWorker"
   queue: default
   active_job: true
+
+send_second_email:
+  cron: "0 2 15 * *"
+  class: "SecondEmailWorker"
+  queue: default
+  active_job: true
+
+send_third_email:
+  cron: "0 2 30 * *"
+  class: "ThirdEmailWorker"
+  queue: default
+  active_job: true
