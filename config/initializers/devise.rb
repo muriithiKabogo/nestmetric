@@ -10,7 +10,7 @@ Devise.setup do |config|
   if Rails.env.production?
 
   config.omniauth :stripe_connect,
-      ENV['SSTRIPE_CONNECT_CLIENT_ID_PRO'],
+      ENV['STRIPE_CONNECT_CLIENT_ID_PRO'],
       ENV['STRIPE_SECRET_KEY_PRO'],
       :scope => 'read_write',
       :stripe_landing => 'login'
