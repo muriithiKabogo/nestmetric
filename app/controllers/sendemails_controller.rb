@@ -8,22 +8,31 @@ class SendemailsController < ApplicationController
 
 		if params[:risklevel] == "risky"
 			@esubject = "EXPIRY NOTICE"
+			@template = @user.email_templates.find_by_etype("thirty days expiry notice")
 			puts "I am here to kill you"
-			UserMailer.expiry_notice(@user.email,@customer_email,@esubject).deliver_now
+			plan = @customer.plan
+			last4 = @customer.last4
+			UserMailer.expiry_notice(plan, last4, @template,@user.email,@customer_email,@esubject).deliver_now
 			@customer.emailsent = true
 			@customer.save
 
 		elsif params[:risklevel] == "riskier"
 			@esubject = "EXPIRY NOTICE"
+			@template = @user.email_templates.find_by_etype("Fifteen days expiry notice")
 			puts "I am here to kill you"
-			UserMailer.expiry_notice(@user.email,@customer_email,@esubject).deliver_now
+			plan = @customer.plan
+			last4 = @customer.last4
+			UserMailer.expiry_notice(plan, last4, @template,@user.email,@customer_email,@esubject).deliver_now
 			@customer.emailsent = true
 			@customer.save
 			
 		else
 			@esubject = "EXPIRY NOTICE"
+			@template = @user.email_templates.find_by_etype("seven day expiry")
+			plan = @customer.plan
+			last4 = @customer.last4
 			puts "I am here to kill you"
-			UserMailer.expiry_notice(@user.email,@customer_email,@esubject).deliver_now
+			UserMailer.expiry_notice(plan, last4, @template,@user.email,@customer_email,@esubject).deliver_now
 			@customer.emailsent = true
 			@customer.save
 		end

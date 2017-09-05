@@ -171,6 +171,7 @@ class User < ApplicationRecord
       amount = customer["subscriptions"]["data"][0]["items"]["data"][0]["plan"]["amount"]
       expiryMonth = customer["sources"]["data"][0]["exp_month"]
       expiryYear = customer["sources"]["data"][0]["exp_year"]
+      last4 = customer["sources"]["data"][0]["last4"]
       custId = customer["id"]
       rlevel = "risky"
       riskierl = "riskier"
@@ -178,15 +179,15 @@ class User < ApplicationRecord
 
       if Date.today.day < 15
 
-        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel, expiryMonth: expiryMonth, expiryYear: expiryYear)
+        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: rlevel, expiryMonth: expiryMonth, expiryYear: expiryYear,last4: last4)
       
       elsif Date.today.day >= 15 && Date.today.day < 22
         
-        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskierl, expiryMonth: expiryMonth, expiryYear: expiryYear)
+        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskierl, expiryMonth: expiryMonth, expiryYear: expiryYear,last4: last4)
       
       else
         
-        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskiestl, expiryMonth: expiryMonth, expiryYear: expiryYear)
+        user.riskycustomers.create(email: customer["email"],plan: planName, amount: amount, customerId: custId, rlevel: riskiestl, expiryMonth: expiryMonth, expiryYear: expiryYear,last4: last4)
       end
 
     end

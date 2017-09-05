@@ -24,10 +24,17 @@ class UserMailer < ApplicationMailer
 	   	  subject: esubject
     end
 
-    def expiry_notice(user,customer_email,esubject)
+    def expiry_notice(plan,last4,template,user,customer_email,esubject)
     	@customer_email = customer_email
+    	@template = template.body
+ 		@last4 = last4
+ 		@plan = plan
 
-    	mail from: user,
+ 		@template = @template.gsub("{{planName}}", @plan)
+		@template = @template.gsub("{{last4numbers}}", @last4)
+		@template = @template.gsub("{{customer-email}}",@customer_email)
+		
+      	mail from: user,
 	    	   to: @customer_email,
 	   	  subject: esubject
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830095801) do
+ActiveRecord::Schema.define(version: 20170905090807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170830095801) do
     t.integer "expiryYear"
     t.boolean "emailsent"
     t.boolean "recovered"
+    t.string "last4"
     t.index ["user_id"], name: "index_riskycustomers_on_user_id"
   end
 
