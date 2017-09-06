@@ -25,7 +25,7 @@ class UserMailer < ApplicationMailer
     end
 
     def expiry_notice(plan,last4,template,user,customer_email,esubject)
-    	@customer_email = "dmuriithi.k@gmail.com"#customer_email
+    	@customer_email = customer_email
     	@template = template.body
  		@last4 = last4
  		@plan = plan
