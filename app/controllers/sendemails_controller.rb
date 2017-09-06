@@ -2,7 +2,7 @@ class SendemailsController < ApplicationController
 	before_action :authenticate_user!
 	def create
 		@user = current_user
-		@customer_email = params[:email]
+		@customer_email = @user.email
 		@customer = @user.riskycustomers.find_by(email: @customer_email)
 		
 

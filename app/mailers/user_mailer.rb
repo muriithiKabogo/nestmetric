@@ -33,6 +33,7 @@ class UserMailer < ApplicationMailer
  		@template = @template.gsub("{{planName}}", @plan)
 		@template = @template.gsub("{{last4numbers}}", @last4)
 		@template = @template.gsub("{{customer-email}}",@customer_email)
+		@template = @template.gsub("{{failureMessage}}", "Card Decline")
 		
       	mail from: user,
 	    	   to: @customer_email,
