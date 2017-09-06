@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 
             firstbody = "<p>Greetings {{customer-email}}</p>
 <p>We just tried to charge your card, but it failed for the following reason:</p>
+  <p> {{failureMessage}} </p>
 <p>This indicates that there's something wrong with your payment method. Most of the time this is due to <em><strong>expired credit card</strong></em> or a recently <em><strong>changed billing address. </strong></em></p>
 <p>Please update your payment information to keep your account active (it'll take less than a minute).</p>
 <p>Let us know if there's anything else we can do to help you get the most out of it.</p>
@@ -46,17 +47,15 @@ class ApplicationController < ActionController::Base
 
             thisubject = "Failed charge"
 
-            thibody = "<p>Greetings Rosie</p> <p>We just re-tried to charge your card for a 
-                  third time, but it failed for the following reason:</p> <p>Card Declined.</p> 
+            thibody = "<p>Greetings {{customer-email}}</p> <p>We just re-tried to charge your card for a 
+                  third time, but it failed for the following reason:</p> <p> {{failureMessage}} </p> 
                   <p>&nbsp;Most of the time this is due to <em><strong>expired credit card</strong></em> or
                    a recently <em><strong>changed billing address.</strong></em></p> 
                    <p>Please update your payment information to keep your account active
-                    (it'll take less than a minute). To save you some time, h
-                    ere's a direct link to your payment update page </p>
-                    <%= link_to 'update credit card' ,new_riskycustomer_path%> 
+                    (it'll take less than a minute). 
                      <p>
-                    Thanks so much for choosing Kudobuzz.&nbsp; Let us know if there's anything
-                     else we can do to help you get the most out of it.</p> <p>Thanks</p> <p>Kenna Amoah</p>"
+                     <p>Let us know if there's anything else we can do to help you get the most out of it.</p>
+                      <p>Thanks</p>"
 
 
             cancetype = "cancellation"
@@ -69,7 +68,7 @@ class ApplicationController < ActionController::Base
 <p>Please update your payment information to keep your account active (it'll take less than a minute).</p>
 <p>In the meantime, we have disabled your account.</p>
 <p>Let us know if you need help on how to go about updating your billing information.</p>
-<p>Thanks,</p>
+<p>Thanks</p>
 <p>&nbsp;</p>"
 
 
@@ -78,7 +77,7 @@ class ApplicationController < ActionController::Base
             thirtysubject = "Expiry Notice"
 
             thirtybody = "<p>Hi {{customer-email}}</p>
-<p>Your Visa card ending in {{last4numbers}}, which is used to process payments for the{{planName}} Plan&nbsp; will expire at the end of this month(in 30 days).</p>
+<p>Your Visa card ending in {{last4numbers}}, which is used to process payments for the {{planName}} Plan&nbsp; will expire at the end of this month(in 30 days).</p>
 <p>If you have a moment, please update your payment information (it'll take less than a minute) u</p>
 <p>Thanks &nbsp;</p>"
 
