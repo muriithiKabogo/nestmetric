@@ -177,6 +177,10 @@
         <th style="padding-left: 50px;">
             <span data-intro="ACTIVE  means the email can be sent out automatically. DRAFT means that the email is NOT active and cannot be triggered automatically">Status</span>
         </th>
+        <th style="padding-left: 50px;">
+            Test
+        </th>
+
 	</tr>
 	<% @email_templates.each do |email_template|%>
 	<tr >
@@ -225,6 +229,9 @@
          })
     </script>
 
+        </td>
+        <td>
+             <%= button_to 'Test Email',sendemails_path, :method =>'post',class: "btn btn-info btn-rounded",params: {email: @user.email,risklevel:email_template.etype}%>
         </td>
 	</tr> 
 	<%end%>
