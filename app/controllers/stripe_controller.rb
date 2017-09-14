@@ -27,7 +27,7 @@ class StripeController < ApplicationController
     customerPlan = customer_data[:object][:lines][:data][0][:plan][:id]
     chargeID = customer_data[:object][:charge]
     if Rails.env.production?
-         Stripe.api_key = ENV['@user.access_code'] 
+         Stripe.api_key = @user.access_code #ENV['@user.access_code'] 
     else
          Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     end
