@@ -31,8 +31,8 @@ class StripeController < ApplicationController
     else
          Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     end
-    customer_data = Stripe::Customer.retrieve("cus_AgI34MFkZad9mc") #"cus_AgI34MFkZad9mc"
-    chargeData = Stripe::Charge.retrieve("ch_1ArPKKEv2HD4YYepax5YYSBS") # "ch_1ArPKKEv2HD4YYepax5YYSBS"
+    customer_data = Stripe::Customer.retrieve(customerId) #"cus_AgI34MFkZad9mc"
+    chargeData = Stripe::Charge.retrieve(chargeID) # "ch_1ArPKKEv2HD4YYepax5YYSBS"
     customer_email = customer_data[:email]
     customer_last4 = customer_data[:sources][:data][0][:last4]
     reason  = chargeData[:failure_message]
