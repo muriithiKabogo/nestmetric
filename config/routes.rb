@@ -3,7 +3,7 @@ require 'sidekiq/cron/web'
 Rails.application.routes.draw do
   
   mount Sidekiq::Web, at: '/sidekiq'
-
+  get 'home/welcome'
   get 'cancellations/index'
 
   get 'failed_charges/index'
