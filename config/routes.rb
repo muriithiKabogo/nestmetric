@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   post 'stripe/subscription_canceled'
 
 
-.
 
   
 
