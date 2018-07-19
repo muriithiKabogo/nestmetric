@@ -1,191 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-  <title>TheSaaS - Comming soon</title>
+    <title>Nestmetric</title>
 
-  <!-- Styles -->
+    <!-- Styles -->
+    <link href="assets/landing/core.min.css" rel="stylesheet">
+    <link href="assets/landing/thesaas.min.css" rel="stylesheet">
+    <link href="assets/landing/style.css" rel="stylesheet">
 
-  <%= stylesheet_link_tag  'core.min.css' %>
-  <%= stylesheet_link_tag  'thesaas.min.css' %> 
-  <%= stylesheet_link_tag  'style.css' %>
-
-  <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-
-  </style>
-  <!--End smartlock -->
-  <script type="text/javascript">
-    window.smartlook||(function(d) {
-      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-      var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-      c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
-    })(document);
-    smartlook('init', '3d616104ebadfdeee8b597e5fc2910d9d57021d7');
-  </script>
-  <!-- End smartlock -->
-
-  <!-- Begin Inspectlet Embed Code -->
-  <script type="text/javascript" id="inspectletjs">
-    (function() {
-      window.__insp = window.__insp || [];
-      __insp.push(['wid', 129745602]);
-      function ldinsp(){ if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=129745602&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
-      setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
-    })();
-  </script>
-  <!-- End Inspectlet Embed Code -->
-
-  <!--Start full story-->
-  <script>
-    window['_fs_debug'] = false;
-    window['_fs_host'] = 'fullstory.com';
-    window['_fs_org'] = '404EJ';
-    window['_fs_namespace'] = 'FS';
-    (function(m,n,e,t,l,o,g,y){
-      if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
-      g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
-      o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
-      y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
-      g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};
-      g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
-      g.clearUserCookie=function(c,d,i){if(!c || document.cookie.match('fs_uid=[`;`]*`[`;`]*`[`;`]*`')){
-        d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
-        ';path=/;expires='+new Date(0).toUTCString();i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
-      })(window,document,window['_fs_namespace'],'script','user');
-    </script>
-    <!-- Start full story-->
-
-    <!-- Start of Woopra Code -->
-    <script>
-      (function(){
-        var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
-      })("woopra");
-
-      woopra.config({
-        domain: 'nestmetric.com'
-      });
-      woopra.track();
-    </script>
-    <!-- End of Woopra Code.... -->
-
-    <!-- Google Code for Remarketing Tag -->
-
-  
-
+    <!-- Favicons -->
+    <!-- <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" href="assets/img/favicon.png"> -->
   </head>
 
   <body>
 
+
+    <!-- Topbar -->
+    <nav class="topbar topbar-inverse topbar-expand-sm">
+      <div class="container">
+        
+        <div class="topbar-left">
+          <a class="topbar-brand" href="index.html">
+            <!-- <img class="logo-default" src="assets/img/logo.png" alt="logo">
+            <img class="logo-inverse" src="assets/img/logo-light.png" alt="logo"> -->
+            <%= image_tag "logo.png", class: 'logo-inverse',:style => "max-height: 50px;"  %>
+          </a>
+        </div>
+
+
+        <div class="topbar-right">
+          <a class="btn btn-sm btn-outline btn-white mr-4" href="">Login</a>
+          <a class="btn btn-sm btn-outline btn-white hidden-sm-down" href="">Register</a>
+        </div>
+
+      </div>
+    </nav>
+    <!-- END Topbar -->
+
+
+
+
     <!-- Header -->
-    <header class="header header-inverse h-fullscreen py-0" style="background-image: url(/assets/color.png);" data-overlay="7">
-     <div class="container text-center">
-      <div class="row h-full align-items-center">
+    <header class="header header-inverse h-fullscreen p-0 bg-primary overflow-hidden" style="background-image: linear-gradient(to right, #6D5197  0%, red 100%);">
+      <canvas class="constellation"></canvas>
 
-        <div class="col-12 col-lg-8 offset-lg-2">
-          <h1>
-            <%= image_tag "logo.png", class: 'logo-default',:style => "max-height: 50px;"  %>
-          </h1>
-          <br>
-          <h1 class="display-4 text-uppercase ls-3">AI Driven Customer Retention</h1>
+      <div class="container text-center">
 
-           <br>
-          <p class="lead opacity-80 "><h4> 
+        <div class="row h-full align-items-center">
+          <div class="col-12 col-md-8 offset-md-2">
 
-            Nestmetric’s AI monitors the behaviour of your customers and sends you real-time alerts when they are likely to buy or stop using your product.
-          </h4>
-          </p>
+            <h1 class="display-4">Automated Machine Learning for Your Entire Business 
+              
+              </h1>
+            <br>
+            <p class="lead text-white fs-20">AI predictions accessible to businesses of all sizes and budgets.
+              That provides high-quality results for any predictive task in minutes. 
+            </p>
+            <br>
+            <a class="btn btn-xl btn-round btn-primary" href="">Get Started</a>
 
-          <br><br>
-          <h5>Access to public beta is by invitation only</h5>
+          </div>
+        </div>
 
-          <!--  <div class='prefinery-form-embed'></div> -->
-          <!-- Begin Prefinery Signup Form -->
+      </div>
+    </header>
+    <!-- END Header -->
 
 
-          <!-- End Prefinery Signup Form -->
-          <div id="pfy_embed_signup">
-            <div class="col-12">
-              <form class="form-inline" action="https://i.prefinery.com/projects/g3bsqaj7/users/post" id="pfy_signup_form" method="post" accept-charset="UTF-8" target="_blank" novalidate>
-                  <input type="email" class="form-control input-lg col-sm-7 mb-1 ml-auto mr-sm-2" autocomplete="email" name="user[profile][email]" id="pfy_user_profile_email" placeholder="Enter your email  to request FREE early access">
-                  
-                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="265193e23ea8f4e60dc21a3824f6898b35de9a8d" tabindex="-1" value="">
-                  </div>
-                  <input type="submit" value="Signup Now" class="btn btn-lg btn-success col-sm-4 mb-1 mr-auto">
-              </form>
+
+
+
+
+    <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | CTA
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section section-inverse py-40" style="background-color: #8ea6e6">
+        <div class="container">
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-9">
+              <h4 class="fw-300 mb-0">Industry: SaaS, Banking,  Healthcare,   Insurance,  Fintech,    Marketing  & Manufacturing
+                </h4>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <a class="btn btn-round btn-white" href="">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+    <!-- Main container -->
+    <main class="main-content">
+
+
+
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Features
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section">
+        <div class="container">
+          <header class="section-header mb-0">
+            <small><strong></strong></small>
+            <h2>Point-and-click Automated Machine Learning Platform 
+            </h2>
+            <hr>
+            <p class="lead">Nestmetric allows anyone in an organization to create a machine learning models with just a few clicks of a button – no coding required. 
+              
+              .</p>
+          </header>
+
+
+          
+          <div class="row gap-y">
+            
+            <div class="col-12 offset-md-2 col-md-8 mb-30">
+              <img src="assets/landing/welcome.gif" alt="..." data-aos="fade-up">
+            </div>
+
+
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="flexbox gap-items-4">
+                <div>
+                  <i class="fa fa-tv fs-25 pt-4 text-secondary"></i>
+                </div>
+
+                <div>
+                  <h5>Seamless integration 
+                  </h5>
+                  <p>Nestmetric automatically takes in raw data from a variety of sources and formats (CSV) and processes it into a form that can be used by its state-of-the-art learning algorithms.
+                    .</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="flexbox gap-items-4">
+                <div>
+                  <i class="fa fa-wrench fs-25 pt-4 text-secondary"></i>
+                </div>
+
+                <div>
+                  <h5>AutoML
+                    
+                  </h5>
+                  <p>Nestmetric  automate every step of the machine learning process, creating an end-to-end solution that works at the speed of your business.</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="flexbox gap-items-4">
+                <div>
+                  <i class="fa fa-cubes fs-25 pt-4 text-secondary"></i>
+                </div>
+
+                <div>
+                  <h5>
+                    Model Selection 
+                   </h5>
+                  <p>You can use Nestmetric to evaluate the performance of each model and selects the winner on an ongoing basis.</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="flexbox gap-items-4">
+                <div>
+                  <i class="fa fa-code fs-25 pt-4 text-secondary"></i>
+                </div>
+
+                <div>
+                  <h5> Data Preprocessing
+                  </h5>
+                  <p> Collects raw data points of structured data and ingests it into a machine learning framework.
+                    .</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="flexbox gap-items-4">
+                <div>
+                  <i class="fa fa-file-text-o fs-25 pt-4 text-secondary"></i>
+                </div>
+
+                <div>
+                  <h5>Learning 
+                    
+                  </h5>
+                  <p>Nestmetric  predictive platform adapts in real-time to ongoing data as it’s ingested, constantly learning and adapting to optimize for your strategic business goals.</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-6 col-xl-4">
+              <div class="flexbox gap-items-4">
+                <div>
+                  <i class="fa fa-download fs-25 pt-4 text-secondary"></i>
+                </div>
+
+                <div>
+                  <h5>Actionable insights 
+                  </h5>
+                  <p>The outputs of Nestmetric ’s machine learning models can be integrated directly into your user experiences and business automation tools.
+                    .</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | CTA
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section section-inverse py-40" style="background-color: #8ea6e6">
+        <div class="container">
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-9">
+              <h4 class="fw-300 mb-0">With all this power, the work that used to take months is now finished in just hours.
+                </h4>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <a class="btn btn-round btn-white" href="">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Features
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section bg-gray">
+        <div class="container">
+          <header class="section-header">
+            <small></small>
+            <h2>How It Works</h2>
+            <hr>
+            <p class="lead">Enables users to build and deploy highly accurate machine learning models in a fraction of the time it takes using traditional data science methods</p>
+          </header>
+
+
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-5">
+              <img class="rounded shadow-2" src="assets/landing/feature-1.png" alt="..." data-aos="zoom-in">
+            </div>
+
+            <div class="col-12 col-md-7">
+              <h4>Users upload their data</h4>
+              <p>Upload an entirely new set of data for Nestmetric  to train on. This data will serve as the basis on which your machine learning model makes predictions.
+              </p>
             </div>
           </div>
 
-      </div>
-    </div>
-  </div>
-</header>
-<!-- END Header -->
 
-<div class="container text-center" style="background-color: #0D283F;width:100%;color: white;height: 15%;">
-  <div class="row">
-    <div class="col-12" style="margin-top: 50px;">
-      <h1 style="color:white;"> Retaining  your  customers shouldn’t be  hard</h1>
-    </div>
-  </div>
-  <div class="row" style="margin-top: 50px;">
+          <hr>
 
-    <div class="col-sm-4">
-      <p><%= image_tag "predict.png" ,style:"height:100px;"%></p>
-      <h5 style="color:white;">Identify customers  likely to churn</h5>
-      <p>
-        Monitor customer usage and predict who is likely to churn so you can win them over BEFORE they stop using your product.
-      </p>
-    </div>
 
-    <div class="col-sm-4">
-      <p><%= image_tag "funnel.png" ,style:"height:100px;"%></p>
-      <h5 style="color:white;">Identify customers  likely to convert </h5>
-      <p>Instantly identify your most active customers and the attributes that influence purchasing behaviors so you can convert them.
-      </p>
-      
-    </div>
-
-    <div class="col-sm-4">
-     <p><%= image_tag "paper-plane-icon.png" ,style:"height:100px;"%></p>
-     <h5 style="color:white;">Engage with customers</h5>
-     <p>Encourage your customers to take action by sending relevant messages to the right audience at the right time.</p>
-
-   </div>
- </div>
- <br><br>
- <h5 style="color:white;">Access to public beta is by invitation only</h5>
- <div class="row">
-  <div class="col-md-3 hidden-sm">
-  </div>
-  <div class="col-md-6 col-sm-12 text-center">
-     
-     <div id="pfy_embed_signup">
-            <div class="col-12">
-              <form class="form-inline" action="https://i.prefinery.com/projects/g3bsqaj7/users/post" id="pfy_signup_form" method="post" accept-charset="UTF-8" target="_blank" novalidate>
-                  <input type="email" class="form-control input-lg col-sm-7 mb-1 ml-auto mr-sm-2" autocomplete="email" name="user[profile][email]" id="pfy_user_profile_email" placeholder="Enter your email  to request FREE early access">
-                  
-                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="265193e23ea8f4e60dc21a3824f6898b35de9a8d" tabindex="-1" value="">
-                  </div>
-                  <input type="submit" value="Signup Now" class="btn btn-lg btn-success col-sm-4 mb-1 mr-auto">
-              </form>
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-7">
+              <h4>Select target variables and algorithm
+              </h4>
+              <p>Nestmetric  gives you the power to solve a variety of problems with a wide selection of ML algorithm and also   specify what metric your machine learning model should predict
+                by selecting different events. Nestmetric also allows you to create machine learning models for a wide variety of other business problems such as maximizing retention, increasing upsell and so on.
+                .</p>
             </div>
-    </div>
 
-  </div>
-  <div class="col-md-3 hidden-sm">
-  </div>
-</div>
-<p></p>
-</div>
-<!-- Start of Async Prefinery Code -->
-<script type="text/javascript">var _pfy = _pfy || [];(function(){function pfy_load(){var pfys=document.createElement('script');pfys.type='text/javascript';pfys.async=true;pfys.src='https://widget.prefinery.com/widget/v2/g3bsqaj7.js';var pfy=document.getElementsByTagName('script')[0];pfy.parentNode.insertBefore(pfys,pfy);}if (window.attachEvent){window.attachEvent('onload',pfy_load);}else{window.addEventListener('load',pfy_load,false);}})();</script>
-<!-- End of Async Prefinery Code -->
-</body>
+            <div class="col-12 col-md-5">
+              <img class="rounded shadow-2" src="assets/landing/feature-2.png" alt="..." data-aos="zoom-in">
+            </div>
+          </div>
+
+
+          <hr>
+
+
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-5">
+              <img class="rounded shadow-2" src="assets/landing/feature-3.png" alt="..." data-aos="zoom-in">
+            </div>
+
+            <div class="col-12 col-md-7">
+              <h4>Push a button to generate a thoroughly trained and optimized model that's ready to predict</h4>
+              <p>Once you’ve built your machine learning model, Nestmetric  lets you look “under the hood” of machine learning, giving you a detailed view of The Algorithms – how many were trained, and how did the performance of each algorithm (and each variation of each algorithm) rank
+              </p>
+            </div>
+          </div>
+
+
+
+        </div>
+      </section>
+
+
+
+ <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | CTA
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section section-inverse py-40" style="background-color: #8ea6e6">
+        <div class="container">
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-9">
+              <h4 class="fw-300 mb-0">Nestmetric is for Business analyst, Data scientist, Executives, & Marketers 
+                </h4>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <a class="btn btn-round btn-white" href="">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Pricing
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+      <section class="section">
+        <div class="container">
+          <header class="section-header">
+            <small>Plans</small>
+            <h2>Flexible Pricing</h2>
+            <hr>
+            <p class="lead opacity-70"> 1 free Model, no credit card required.</p>
+          </header>
+
+          <div class="row gap-y text-center">
+
+            <div class="col-12 col-md-4">
+              <div class="pricing-1">
+                <p class="plan-name">Basic</p>
+                <br>
+                <h2 class="price">$49</h2>
+                <br>
+
+                <small><strong>2</strong> Models</small><br>
+                <small><strong>300</strong> Predictions</small><br>
+                <small><strong>Small</strong> Model size </small><br>
+                
+                <br>
+                <p class="text-center py-3"><a class="btn btn-primary" href="">Get started</a></p>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-4">
+              <div class="pricing-1">
+                <p class="plan-name">Standard</p>
+                <br>
+                <h2 class="price text-success"><span class="price-unit">$</span>$299</h2>
+                <br>
+                <small><strong>4</strong> Models</small><br>
+                <small><strong>30,000</strong> Predictions</small><br>
+                <small><strong>Medium</strong> Model size </small><br>
+             
+               
+                <br>
+                <p class="text-center py-3"><a class="btn btn-success" href="">Get started</a></p>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-md-4">
+              <div class="pricing-1">
+                <p class="plan-name">Business</p>
+                <br>
+                <h2 class="price"><span class="price-unit">$</span>$999</h2>
+                <br>
+
+                <small><strong>10</strong> Models</small><br>
+                <small><strong>300,000</strong> Predictions</small><br>
+                <small><strong>Large</strong> Model size </small><br>
+               
+                <br>
+                <p class="text-center py-3"><a class="btn btn-primary" href="">Get started</a></p>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </section>
+
+
+
+     
+
+
+
+    </main>
+    <!-- END Main container -->
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+  
+      <section class="section section-inverse py-40" style="background-color: #8ea6e6">
+        <div class="container">
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-9">
+              <h4 class="fw-300 mb-0">Stay focused on the business problem instead of getting lost in the process and workflow
+                </h4>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <a class="btn btn-round btn-white" href="">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+      ©2018 Nestmetric, Inc.
+
+    </footer>
+    <!-- END Footer -->
+
+
+
+    <!-- Scripts -->
+    <script src="assets/landing/core.min.js"></script>
+    <script src="assets/landing/thesaas.min.js"></script>
+    <script src="assets/landing/script.js"></script>
+
+  </body>
 </html>
