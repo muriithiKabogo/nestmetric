@@ -56,6 +56,3 @@ Rails.application.config.assets.precompile += %w( card.css )
 Rails.application.config.assets.precompile += %w( card.js )
 Rails.application.config.assets.precompile += %w( stripe.js)
 
-Rails.application.config.assets.precompile += %w( core.min.js )
-Rails.application.config.assets.precompile += %w( thesaas.min.js )
-Rails.application.config.assets.precompile += %w( script.js )
